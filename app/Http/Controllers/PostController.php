@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::paginate(20);
+        $posts = Post::orderby('updated_at', 'desc')->paginate(20);
 
         return View::make('posts.index')->with(compact('posts'));
     }
