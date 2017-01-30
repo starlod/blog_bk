@@ -4,7 +4,7 @@
 <div id="post" class="container">
     <h1>{{ $post->title }}</h1>
     <div class="panel panel-default">
-        <div class="panel-body">{!! $post->body !!}</div>
+        <div class="panel-body">{!! nl2br($post->body) !!}</div>
         <div class="panel-footer">
             {{ Form::open(['url' => ["/posts/$post->id"], 'method' => 'POST']) }}
                 {{ link_to("/posts", trans('common.buttons.back'), ['class' => 'btn btn-default']) }}
