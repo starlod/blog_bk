@@ -110,6 +110,8 @@ class PostController extends Controller
         $post = post::find($id);
         $post->delete();
 
+        $this->success('messages.deleted', ['name' => '記事']);
+
         return redirect('/posts');
     }
 }
