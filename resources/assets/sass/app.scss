@@ -4,6 +4,48 @@
 
 // Variables
 @import "variables";
+@import "utilities_spacing";
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.lineclamp {
+
+  /* config */
+  line-height: 1.5;
+  height: 3em;
+  background-color: #fff;
+  /* config end */
+
+  position: relative;
+  padding-right: 1em;
+  overflow: hidden;
+}
+
+.lineclamp:before {
+  content: "...";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: inline-block;
+  width: 1em;
+}
+
+.lineclamp:after {
+  content: "";
+  position: relative;
+  right: -1em;
+  float: right;
+  width: 1em;
+  height: 100%;
+  background-color: inherit;
+}
+
+footer {
+    background-color: #aaa;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color : #fff;
+    margin-top:30px;
+}

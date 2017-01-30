@@ -2,8 +2,9 @@
 
 @section('content')
 <div id="post" class="container">
-    <h1>{{ trans('model.post') }} {{ trans('common.actions.edit') }}</h1>
-    {{ Form::open(['url' => "/posts/$post->id", 'method' => 'POST', 'class' => 'form-horizontal']) }}
+    <h1 class="title">{{ trans('model.post') }} {{ trans('common.actions.edit') }}</h1>
+
+    {{ Form::open(['url' => "/posts/$post->id", 'method' => 'POST', 'class' => 'well form-horizontal']) }}
         {{ Form::hidden('_method', 'PUT') }}
         @include('posts._form')
 

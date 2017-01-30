@@ -17,8 +17,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Post::query();
-        $posts = $query->paginate(20);
+        $posts = Post::paginate(20);
 
         return View::make('posts.index')->with(compact('posts'));
     }
@@ -47,6 +46,7 @@ class PostController extends Controller
         DB::beginTransaction();
 
         $post = Post::create($request->all());
+        $this->success('messages.created', ['name' => '記事']);
 
         DB::commit();
 
@@ -92,6 +92,7 @@ class PostController extends Controller
 
         $post = Post::find($id);
         $post = $post->update($request->all());
+        $this->success('messages.updated', ['name' => '記事']);
 
         DB::commit();
 
