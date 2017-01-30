@@ -1,3 +1,4 @@
+<header>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -15,6 +16,21 @@
                 <li class="active"><a href="{{ url('/posts') }}">記事一覧</a></li>
                 <li><a href="{{ url('/posts/create') }}">記事投稿</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right hidden-sm">
+                @if(Auth::check())
+                        <li><a href="{{ url('home') }}">ダッシュボード</a></li>
+                @endif
+                @if(Auth::guest())
+                        <li><a href="{{ url('auth/login') }}">ログイン</a></li>
+                @endif
+                @if(Auth::guest())
+                        <li><a href="{{ url('auth/register') }}">サインアップ</a></li>
+                @endif
+                @if(Auth::check())
+                        <li><a href="{{ url('auth/logout') }}">ログアウト</a></li>
+                @endif
+            </ul>
         </div>
     </div>
 </nav>
+</header>

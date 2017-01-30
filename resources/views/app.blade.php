@@ -12,10 +12,12 @@
 </head>
 <body>
 
+<div id="app">
 @include('_header')
 @include('_messages')
 @yield('content')
 @include('_footer')
+</div>
 
 @yield('pre_javascripts')
 <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
