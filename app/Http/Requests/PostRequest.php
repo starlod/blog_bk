@@ -36,6 +36,6 @@ class PostRequest extends FormRequest
      */
     public function attributes()
     {
-        return Lang::get('messages.posts');
+        return \Lang::get('messages.posts');
     }
 }
