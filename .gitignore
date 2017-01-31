@@ -7,7 +7,9 @@ Homestead.json
 Homestead.yaml
 .env
 public/mix-manifest.json
+public/css/app.*.css
 public/css/app.css
+public/js/app.*.js
 public/js/app.js
 public/fonts/glyphicons-halflings-regular.eot
 public/fonts/glyphicons-halflings-regular.svg
