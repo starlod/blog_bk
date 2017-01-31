@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -14,11 +14,11 @@
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th>{{ trans('model.posts.id') }}</th>
-                <th>{{ trans('model.posts.title') }}</th>
-                <th>{{ trans('model.posts.body') }}</th>
-                <th class="c-w-8">作成日</th>
-                <th class="c-w-8">更新日</th>
+                <th>{{ trans('messages.posts.id') }}</th>
+                <th>{{ trans('messages.posts.title') }}</th>
+                <th>{{ trans('messages.posts.body') }}</th>
+                <th class="c-w-8">{{ trans('messages.common.created_at') }}</th>
+                <th class="c-w-8">{{ trans('messages.common.updated_at') }}</th>
             </tr>
         </thead>
         <tbody>
