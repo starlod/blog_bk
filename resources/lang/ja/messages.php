@@ -87,6 +87,7 @@ return [
      * 通常 メッセージ
      */
 
+
     /**
      * 成功 メッセージ
      */
@@ -98,6 +99,7 @@ return [
     /**
      * 警告 メッセージ
      */
+    'not_found'        => ':nameが見つかりませんでした。',
     'already_created'  => 'この:nameはすでに登録済みです。',
     'already_uploaded' => ':nameファイルはすでに登録済みです。',
 

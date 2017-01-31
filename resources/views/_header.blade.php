@@ -13,16 +13,16 @@
 
         <div class="collapse navbar-collapse" id="navbarEexample">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ url('/posts') }}">{{ trans('messages.menu.posts_index') }}</a></li>
-                <li><a href="{{ url('/posts/create') }}">{{ trans('messages.menu.posts_create') }}</a></li>
+                <li class="active"><a href="{{ url('/posts') }}"><i class="fa fa-list" aria-hidden="true"></i> {{ trans('messages.menu.posts_index') }}</a></li>
+                <li><a href="{{ url('/posts/create') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ trans('messages.menu.posts_create') }}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right hidden-sm">
                 @if (Auth::check())
-                    <li><a href="{{ url('home') }}">{{ trans('messages.menu.dashboard') }}</a></li>
+                    <li><a href="{{ url('home') }}"><i class="fa fa-tachometer" aria-hidden="true"></i> {{ trans('messages.menu.dashboard') }}</a></li>
                 @endif
                 @if (Auth::guest())
-                    <li><a href="{{ url('login') }}">{{ trans('messages.menu.login') }}</a></li>
-                    <li><a href="{{ url('register') }}">{{ trans('messages.menu.signup') }}</a></li>
+                    <li><a href="{{ url('login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> {{ trans('messages.menu.login') }}</a></li>
+                    <li><a href="{{ url('register') }}"><i class="fa fa-heart" aria-hidden="true"></i> {{ trans('messages.menu.signup') }}</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -34,7 +34,7 @@
                                 <a href="{{ url('/logout') }}"
                                     onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                    {{ trans('messages.menu.logout') }}
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i> {{ trans('messages.menu.logout') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display: none;">

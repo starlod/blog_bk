@@ -8,9 +8,14 @@ Homestead.yaml
 .env
 public/mix-manifest.json
 public/css/app.css
+public/js/app.js
 public/fonts/glyphicons-halflings-regular.eot
 public/fonts/glyphicons-halflings-regular.svg
 public/fonts/glyphicons-halflings-regular.ttf
 public/fonts/glyphicons-halflings-regular.woff
 public/fonts/glyphicons-halflings-regular.woff2
-public/js/app.js
+public/fonts/fontawesome-webfont.eot
+public/fonts/fontawesome-webfont.svg
+public/fonts/fontawesome-webfont.ttf
+public/fonts/fontawesome-webfont.woff
+public/fonts/fontawesome-webfont.woff2

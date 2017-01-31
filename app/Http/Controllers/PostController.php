@@ -61,9 +61,12 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
+        if ($post = Post::find($id)) {
+            return View::make('posts.show')->with(compact('post'));
+        }
 
-        return View::make('posts.show')->with(compact('post'));
+        $this->warning('messages.not_found', ['name' => '記事']);
+        return redirect('/posts');
     }
 
     /**
@@ -74,9 +77,12 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
+        if ($post = Post::find($id)) {
+            return View::make('posts.edit')->with(compact('post'));
+        }
 
-        return View::make('posts.edit')->with(compact('post'));
+        $this->warning('messages.not_found', ['name' => '記事']);
+        return redirect('/posts');
     }
 
     /**
