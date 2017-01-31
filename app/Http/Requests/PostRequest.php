@@ -28,4 +28,14 @@ class PostRequest extends FormRequest
             'body'  => 'required',
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return Lang::get('messages.posts');
+    }
 }

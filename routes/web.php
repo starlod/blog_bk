@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::resource('posts', 'PostController');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/', function () {
+    return redirect('posts');
+});
+
+Route::resource('posts', 'PostController');
