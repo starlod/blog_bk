@@ -7,7 +7,7 @@
 <link rel="shortcut icon" href="{{ URL::asset('favicon.ico') }}">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <title>{{ config('app.name', 'Laravel') }}</title>
-<link rel="stylesheet" href="{{ elixir('css/all.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('css/all.css') }}">
 @yield('stylesheets')
 </head>
 <body>
@@ -20,7 +20,7 @@
 </div>
 
 @yield('pre_javascripts')
-<script type="text/javascript" src="{{ elixir('css/all.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('css/all.js') }}"></script>
 @yield('post_javascripts')
 </body>
 </html>
