@@ -20,7 +20,7 @@
 </div>
 
 @yield('pre_javascripts')
-<script type="text/javascript" src="{{ URL::asset('css/all.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/all.js') }}"></script>
 @yield('post_javascripts')
 </body>
 </html>
