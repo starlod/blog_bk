@@ -69,8 +69,8 @@ class AppModel extends Model
 
     public function setCreatedUser()
     {
-        if (isset($model->created_by_id)) {
-            $model->created_by_id = Auth::user()->id;
+        if (isset($model->created_id)) {
+            $model->created_id = Auth::user()->id;
         }
 
         $this->setUpdatedUser();
@@ -78,8 +78,8 @@ class AppModel extends Model
 
     public function setUpdatedUser()
     {
-        if (isset($model->updated_by_id)) {
-            $model->updated_by_id = $model->created_by_id;
+        if (isset($model->updated_id)) {
+            $model->updated_id = $model->created_id;
         }
     }
 }

@@ -17,17 +17,13 @@ class Post extends AppModel
         'title',
         'body',
         'author_id',
-        'created_by_id',
-        'updated_by_id',
+        'created_id',
+        'updated_id',
     ];
 
     protected static function boot()
     {
         parent::boot();
-
-        static::creating(function($model) {
-            $model->author_id = Auth::user()->id;
-        });
     }
 
     public function author()

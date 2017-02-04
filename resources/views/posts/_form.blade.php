@@ -9,9 +9,10 @@
         {{ Form::textarea('body', $post->body, ['class' => 'form-control', 'required' => 'required']) }}
     </div>
 </fieldset>
-
+{{--
 <fieldset class="form-group">
     <div class="col-xs-12">
         {{ Form::select('author_id', $users, null, ['class' => 'form-control', 'required' => 'required']) }}
     </div>
 </fieldset>
+--}}

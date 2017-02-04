@@ -7,6 +7,7 @@ use App\Http\Requests\PostRequest;
 use App\Post;
 use App\User;
 use View;
+use Auth;
 use DB;
 
 class PostController extends Controller
@@ -45,7 +46,9 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $post = Post::create($request->all());
+        $post = Post::create($request->all() + [
+            'author_id' => Auth::user()->id,
+        ]);
         $this->success('messages.created', ['name' => '記事']);
 
         return redirect("/posts/$post->id");
