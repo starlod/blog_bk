@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Post;
+use App\User;
 use View;
 use DB;
 
@@ -31,8 +32,9 @@ class PostController extends Controller
     public function create()
     {
         $post = new Post;
+        $users = User::all()->pluck('name', 'id');
 
-        return View::make('posts.new')->with(compact('post'));
+        return View::make('posts.new')->with(compact('post', 'users'));
     }
 
     /**

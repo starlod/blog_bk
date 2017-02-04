@@ -31,7 +31,7 @@ class Controller extends BaseController
     {
         $user = \Auth::user();
         $user_id = $user ? $user->id : '';
-        $user_name = $user ? $user->name() : 'guest';
+        $user_name = $user ? $user->name : 'guest';
         $uri = (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
         $user_agent = $_SERVER["HTTP_USER_AGENT"];
         $referer = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : '';

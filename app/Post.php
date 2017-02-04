@@ -2,9 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Post extends Model
+class Post extends AppModel
 {
     protected $table = 'posts';
 
@@ -16,5 +14,13 @@ class Post extends Model
     protected $fillable = [
         'title',
         'body',
+        'author_id',
+        'created_by_id',
+        'updated_by_id',
     ];
+
+    public function author()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

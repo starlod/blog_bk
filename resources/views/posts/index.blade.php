@@ -17,7 +17,7 @@
                 <th>{{ trans('messages.posts.id') }}</th>
                 <th>{{ trans('messages.posts.title') }}</th>
                 <th>{{ trans('messages.posts.body') }}</th>
-                <th class="c-w-8">{{ trans('messages.common.created_at') }}</th>
+                <th>{{ trans('messages.posts.author') }}</th>
                 <th class="c-w-8">{{ trans('messages.common.updated_at') }}</th>
             </tr>
         </thead>
@@ -27,7 +27,7 @@
                     <td>{{ $post->id }}</td>
                     <td>{{ link_to("/posts/$post->id", $post->title) }}</td>
                     <td>{{ strip_tags($post->body) }}</td>
-                    <td>{{ fuzzy_time($post->created_at) }}</td>
+                    <td>{{ $post->author->name }}</td>
                     <td>{{ fuzzy_time($post->updated_at) }}</td>
                 </tr>
             @endforeach

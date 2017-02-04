@@ -18,7 +18,8 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' => $password ?: 'secret',
+        'role_id' => App\Role::all()->random()->id,
         'remember_token' => str_random(10),
     ];
 });
@@ -29,5 +30,8 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->text,
         'body' => $faker->text,
+        'author_id' => App\User::all()->random()->id,
+        'created_by_id' => App\User::all()->random()->id,
+        'updated_by_id' => App\User::all()->random()->id,
     ];
 });

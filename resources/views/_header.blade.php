@@ -31,6 +31,12 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                <a href="{{ url('/profile') }}">
+                                    <i class="fa fa-user-circle" aria-hidden="true"></i> {{ trans('messages.menu.profile') }}
+                                </a>
+                                <a href="{{ url('/change_password') }}">
+                                    <i class="fa fa-user-circle" aria-hidden="true"></i> {{ trans('messages.menu.change_password') }}
+                                </a>
                                 <a href="{{ url('/logout') }}"
                                     onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
