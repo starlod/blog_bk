@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">{{ trans('messages.users.confirm_password') }}</label>
+                            <label for="password-confirm" class="col-md-4 control-label">{{ trans('messages.users.password_confirmation') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>

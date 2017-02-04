@@ -19,13 +19,8 @@ class UserController extends Controller
      */
     public function profile()
     {
-        if ($user = Auth::user()) {
-            return View::make('users.profile')->with(compact('user'));
-        }
-
-        $this->warning('messages.not_found', ['name' => 'ユーザー']);
-
-        return redirect('/');
+        $user = Auth::user();
+        return View::make('users.profile')->with(compact('user'));
     }
 
     /**
@@ -36,15 +31,9 @@ class UserController extends Controller
      */
     public function profileUpdate(Request $request)
     {
-        if ($user = Auth::user()) {
-
-            DB::beginTransaction();
-
-            $user = $user->update($request->all());
-            $this->success('messages.updated', ['name' => 'プロフィール']);
-
-            DB::commit();
-        }
+        $user = Auth::user();
+        $user = $user->update($request->all());
+        $this->success('messages.updated', ['name' => 'プロフィール']);
 
         return redirect("/profile");
     }
@@ -57,13 +46,8 @@ class UserController extends Controller
      */
     public function changePassword()
     {
-        if ($user = Auth::user()) {
-            return View::make('users.change_password')->with(compact('user'));
-        }
-
-        $this->warning('messages.not_found', ['name' => 'ユーザー']);
-
-        return redirect('/');
+        $user = Auth::user();
+        return View::make('users.change_password')->with(compact('user'));
     }
 
     /**
@@ -74,15 +58,13 @@ class UserController extends Controller
      */
     public function changePasswordUpdate(ChangePasswordRequest $request)
     {
-        if ($user = Auth::user()) {
-
-            DB::beginTransaction();
-
-            $user = $user->update($request->all());
-            $this->success('messages.updated', ['name' => 'プロフィール']);
-
-            DB::commit();
+        $user = Auth::user();
+        if ($user->password !== bcrypt($request->current_password)) {
+            $this->warning('messages.not_match_current_password', ['name' => 'ユーザー']);
         }
+
+        $user = $user->update($request->all());
+        $this->success('messages.updated', ['name' => 'プロフィール']);
 
         return redirect("/profile");
     }

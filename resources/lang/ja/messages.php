@@ -10,6 +10,8 @@ return [
         'register' => 'ユーザー登録',
         'dashboard' => 'ダッシュボード',
         'signup' => 'サインアップ',
+        'profile' => 'プロフィール',
+        'change_password' => 'パスワード変更',
     ],
 
     'title' => [
@@ -28,6 +30,7 @@ return [
     ],
 
     'buttons' => [
+        'home'           => 'ホーム',
         'index'          => '一覧',
         'search'         => '検索',
         'show'           => '詳細',
@@ -73,14 +76,16 @@ return [
         'name'     => 'ユーザー名',
         'email'    => 'メールアドレス',
         'password' => 'パスワード',
-        'confirm_password' => 'パスワード確認',
+        'password_confirmation' => 'パスワード確認',
+        'current_password' => '現在のパスワード'
     ],
 
     'post'  => '記事',
     'posts' => [
-        'id'    => 'ID',
-        'title' => 'タイトル',
-        'body'  => '内容',
+        'id'     => 'ID',
+        'title'  => 'タイトル',
+        'body'   => '内容',
+        'author' => '著者',
     ],
 
     /**

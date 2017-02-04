@@ -20,3 +20,7 @@ Route::get('/', function () {
 });
 
 Route::resource('posts', 'PostController');
+Route::get('/profile', 'UserController@profile');
+Route::put('/profile', 'UserController@profileUpdate');
+Route::get('/change_password', 'UserController@changePassword');
+Route::put('/change_password', 'UserController@changePasswordUpdate');

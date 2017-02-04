@@ -45,12 +45,8 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        DB::beginTransaction();
-
         $post = Post::create($request->all());
         $this->success('messages.created', ['name' => '記事']);
-
-        DB::commit();
 
         return redirect("/posts/$post->id");
     }
@@ -96,13 +92,9 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, $id)
     {
-        DB::beginTransaction();
-
         $post = Post::find($id);
         $post = $post->update($request->all());
         $this->success('messages.updated', ['name' => '記事']);
-
-        DB::commit();
 
         return redirect("/posts/$id");
     }
@@ -115,7 +107,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = post::find($id);
+        $post = Post::find($id);
         $post->delete();
 
         $this->success('messages.deleted', ['name' => '記事']);

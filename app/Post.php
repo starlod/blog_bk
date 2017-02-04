@@ -19,6 +19,15 @@ class Post extends AppModel
         'updated_by_id',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function($model) {
+            $model->author_id = Auth::user()->id;
+        });
+    }
+
     public function author()
     {
         return $this->belongsTo(User::class);

@@ -6,13 +6,14 @@
     <div class="panel panel-default">
         <div class="panel-body">{!! nl2br($post->body) !!}</div>
         <div class="panel-footer">
-            {{ Form::open(['url' => ["/posts/$post->id"], 'method' => 'POST']) }}
+            {{ Form::open(['url' => ["/posts/$post->id"], 'method' => 'DELETE']) }}
                 {{ link_to("/posts", trans('messages.buttons.back'), ['class' => 'btn btn-default']) }}
-                @can('update', $post)
+                @can ('update', $post)
                     {{ link_to("/posts/$post->id/edit", trans('messages.buttons.edit'), ['class' => 'btn btn-warning']) }}
                 @endcan
-                {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit(trans('messages.buttons.delete'), ['class' => 'btn btn-danger']) }}
+                @can ('destroy', $post)
+                    {{ Form::submit(trans('messages.buttons.delete'), ['class' => 'btn btn-danger']) }}
+                @endcan
             {{ Form::close() }}
         </div>
     </div>

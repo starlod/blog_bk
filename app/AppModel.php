@@ -8,10 +8,6 @@ use Auth;
 
 class AppModel extends Model
 {
-    /**
-     * timestampsを利用する
-     *
-     */
     public $timestamps = true;
 
     protected $orderBy;
@@ -22,12 +18,11 @@ class AppModel extends Model
         parent::boot();
 
         static::creating(function($model) {
-            $model->created_by_id = Auth::user()->id;
-            $model->updated_by_id = $model->created_by_id;
+            $model->setCreatedUser();
         });
 
         static::updating(function($model) {
-            $model->updated_by_id = Auth::user()->id;
+            $model->setUpdatedUser();
         });
     }
 
@@ -69,6 +64,22 @@ class AppModel extends Model
                     $query->$method_name($keyword);
                 }
             }
+        }
+    }
+
+    public function setCreatedUser()
+    {
+        if (isset($model->created_by_id)) {
+            $model->created_by_id = Auth::user()->id;
+        }
+
+        $this->setUpdatedUser();
+    }
+
+    public function setUpdatedUser()
+    {
+        if (isset($model->updated_by_id)) {
+            $model->updated_by_id = $model->created_by_id;
         }
     }
 }

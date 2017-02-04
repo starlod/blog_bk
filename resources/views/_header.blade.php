@@ -14,7 +14,9 @@
         <div class="collapse navbar-collapse" id="navbarEexample">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ url('/posts') }}"><i class="fa fa-list" aria-hidden="true"></i> {{ trans('messages.menu.posts_index') }}</a></li>
-                <li><a href="{{ url('/posts/create') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ trans('messages.menu.posts_create') }}</a></li>
+                @if (Auth::check())
+                    <li><a href="{{ url('/posts/create') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ trans('messages.menu.posts_create') }}</a></li>
+                @endif
             </ul>
             <ul class="nav navbar-nav navbar-right hidden-sm">
                 @if (Auth::check())
@@ -35,7 +37,7 @@
                                     <i class="fa fa-user-circle" aria-hidden="true"></i> {{ trans('messages.menu.profile') }}
                                 </a>
                                 <a href="{{ url('/change_password') }}">
-                                    <i class="fa fa-user-circle" aria-hidden="true"></i> {{ trans('messages.menu.change_password') }}
+                                    <i class="fa fa-cog" aria-hidden="true"></i> {{ trans('messages.menu.change_password') }}
                                 </a>
                                 <a href="{{ url('/logout') }}"
                                     onclick="event.preventDefault();

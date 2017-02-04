@@ -50,9 +50,9 @@ class User extends Authenticatable
      *
      * @return boolean
      */
-    public function is_developer()
+    public function isDeveloper()
     {
-        return $this->role->name === config('const.roles')[0];
+        return $this->role->name === config('const.roles')[ROLE_DEVELOPER];
     }
 
     /**
@@ -60,9 +60,9 @@ class User extends Authenticatable
      *
      * @return boolean
      */
-    public function is_admin()
+    public function isAdmin()
     {
-        return $this->role->name === config('const.roles')[1];
+        return $this->role->name === config('const.roles')[ROLE_ADMINISTRATOR];
     }
 
     /**
@@ -70,9 +70,9 @@ class User extends Authenticatable
      *
      * @return boolean
      */
-    public function is_editor()
+    public function isEditor()
     {
-        return $this->role->name === config('const.roles')[2];
+        return $this->role->name === config('const.roles')[ROLE_EDITOR];
     }
 
     /**
@@ -80,9 +80,9 @@ class User extends Authenticatable
      *
      * @return boolean
      */
-    public function is_author()
+    public function isAuthor()
     {
-        return $this->role->name === config('const.roles')[3];
+        return $this->role->name === config('const.roles')[ROLE_AUTHOR];
     }
 
     /**
@@ -90,9 +90,9 @@ class User extends Authenticatable
      *
      * @return boolean
      */
-    public function is_contributor()
+    public function isContributor()
     {
-        return $this->role->name === config('const.roles')[4];
+        return $this->role->name === config('const.roles')[ROLE_CONTRIBUTOR];
     }
 
     /**
@@ -100,8 +100,8 @@ class User extends Authenticatable
      *
      * @return boolean
      */
-    public function is_subscriber()
+    public function isSubscriber()
     {
-        return $this->role->name === config('const.roles')[5];
+        return $this->role->name === config('const.roles')[ROLE_SUBSCRIBER];
     }
 }
