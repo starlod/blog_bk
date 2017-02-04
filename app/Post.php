@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Auth;
+
 class Post extends AppModel
 {
     protected $table = 'posts';
