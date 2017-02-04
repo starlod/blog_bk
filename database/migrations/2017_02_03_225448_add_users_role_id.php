@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePosts extends Migration
+class AddUsersRoleId extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreatePosts extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id')->comment('ID');
-            $table->string('title')->index()->comment('記事タイトル');
-            $table->text('body')->nullable()->comment('記事内容');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('role_id')->after('password')->comment('権限ID');
         });
     }
 
@@ -28,6 +25,8 @@ class CreatePosts extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('role_id');
+        });
     }
 }
