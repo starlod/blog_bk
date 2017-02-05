@@ -18,11 +18,11 @@ class AppModel extends Model
         parent::boot();
 
         static::creating(function($model) {
-            $model->setCreatedUser();
+            $model->setCreator();
         });
 
         static::updating(function($model) {
-            $model->setUpdatedUser();
+            $model->setUpdater();
         });
     }
 
@@ -67,19 +67,19 @@ class AppModel extends Model
         }
     }
 
-    public function setCreatedUser()
+    public function setCreator()
     {
-        if (isset($model->created_id)) {
-            $model->created_id = Auth::user()->id;
+        if (isset($model->creator_id)) {
+            $model->creator_id = Auth::user()->id;
         }
 
-        $this->setUpdatedUser();
+        $this->setUpdater();
     }
 
-    public function setUpdatedUser()
+    public function setUpdater()
     {
-        if (isset($model->updated_id)) {
-            $model->updated_id = $model->created_id;
+        if (isset($model->updater_id)) {
+            $model->updater_id = $model->creator_id;
         }
     }
 }
