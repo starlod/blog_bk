@@ -67,8 +67,7 @@ class PostPolicy extends AppPolicy
      */
     public function update(User $user, Post $post)
     {
-        return true;
-        // return $user->id === $post->user_id;
+        return $user->id === $post->author_id;
     }
 
     /**
@@ -76,8 +75,8 @@ class PostPolicy extends AppPolicy
      * @param User $user
      * @return bool
      */
-    public function destroy(User $user)
+    public function destroy(User $user, Post $post)
     {
-        return $user->id === $post->user_id;
+        return $user->id === $post->author_id;
     }
 }

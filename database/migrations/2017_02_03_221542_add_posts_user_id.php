@@ -14,9 +14,9 @@ class AddPostsUserId extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('author_id')->nullable()->after('body')->comment('著者ID');
-            $table->string('created_id')->nullable()->after('author_id')->comment('作成者ID');
-            $table->string('updated_id')->nullable()->after('created_id')->comment('更新者ID');
+            $table->integer('author_id')->nullable()->after('body')->comment('著者ID');
+            $table->integer('creator_id')->nullable()->after('author_id')->comment('作成者ID');
+            $table->integer('updater_id')->nullable()->after('creator_id')->comment('更新者ID');
         });
     }
 
@@ -28,7 +28,7 @@ class AddPostsUserId extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn(['author_id', 'created_id', 'updated_id']);
+            $table->dropColumn(['author_id', 'creator_id', 'updater_id']);
         });
     }
 }

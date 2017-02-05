@@ -14,7 +14,7 @@ class AddUsersRoleId extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role_id')->after('password')->comment('権限ID');
+            $table->integer('role_id')->after('password')->comment('権限ID');
         });
     }
 

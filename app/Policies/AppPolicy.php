@@ -19,10 +19,10 @@ class AppPolicy
         //
     }
 
-    public function before($user, $ability)
-    {
-        if ($user->isDeveloper()) {
-            return true;
-        }
-    }
+    // public function before($user, $ability)
+    // {
+    //     if ($user->isDeveloper()) {
+    //         return true;
+    //     }
+    // }
 }

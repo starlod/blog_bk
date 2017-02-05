@@ -20,6 +20,9 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $posts = Post::orderby('updated_at', 'desc')->paginate(20);
+        if ($posts->count() === 0) {
+            $this->info('messages.no_posts');
+        }
 
         return View::make('posts.index')->with(compact('posts'));
     }
@@ -46,9 +49,9 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $post = Post::create($request->all() + [
-            'author_id' => Auth::user()->id,
-        ]);
+        $post = new Post($request->all());
+        $post->author_id = Auth::user()->id;
+        $post->save();
         $this->success('messages.created', ['name' => '記事']);
 
         return redirect("/posts/$post->id");

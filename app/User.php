@@ -16,6 +16,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'nickname',
         'email',
         'password',
         'role_id',
@@ -43,6 +44,18 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    /**
+     * 関数定義
+     */
+
+    /**
+     * ユーザー名表示
+     */
+    public function name()
+    {
+        return $this->nickname ? $this->nickname : $this->name;
     }
 
     /**

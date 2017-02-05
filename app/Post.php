@@ -17,8 +17,8 @@ class Post extends AppModel
         'title',
         'body',
         'author_id',
-        'created_id',
-        'updated_id',
+        'creator_id',
+        'updater_id',
     ];
 
     protected static function boot()
@@ -27,6 +27,16 @@ class Post extends AppModel
     }
 
     public function author()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function updater()
     {
         return $this->belongsTo(User::class);
     }
