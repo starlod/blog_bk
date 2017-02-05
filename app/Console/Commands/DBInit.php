@@ -61,7 +61,7 @@ class DBInit extends Command
         $users = [
             [
                 'name'    => 'yuki',
-                'email'   => 'rgls.ggl@gmail.com',
+                'email'   => 'yuki@example.com',
                 'password' => 'secret',
                 'role_id' => Role::where(['name' => $roles[ROLE_DEVELOPER]])->first()->id,
             ]

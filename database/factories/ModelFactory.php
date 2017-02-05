@@ -28,10 +28,10 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'title' => $faker->text,
-        'body' => $faker->text,
-        'author_id' => App\User::all()->random()->id,
-        'created_by_id' => App\User::all()->random()->id,
-        'updated_by_id' => App\User::all()->random()->id,
+        'title'      => $faker->text,
+        'body'       => $faker->text,
+        'author_id'  => App\User::all()->random()->id,
+        'creator_id' => App\User::all()->random()->id,
+        'updater_id' => App\User::all()->random()->id,
     ];
 });
