@@ -21,11 +21,6 @@ class Post extends AppModel
         'updater_id',
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
-
     public function author()
     {
         return $this->belongsTo(User::class);
@@ -39,5 +34,10 @@ class Post extends AppModel
     public function updater()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 }
