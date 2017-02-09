@@ -15,11 +15,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/', function () {
-    return redirect('posts');
-});
+Route::get('/', 'BlogController@top');
 
 Route::resource('posts', 'PostController');
+Route::resource('posts/{id}/comments', 'CommentController');
 Route::get('/profile', 'UserController@profile');
 Route::put('/profile', 'UserController@profileUpdate');
 Route::get('/change_password', 'UserController@changePassword');

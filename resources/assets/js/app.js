@@ -14,6 +14,8 @@ require('./bootstrap');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('posts', require('./components/posts.vue'));
+Vue.component('pagination', require('./components/pagination.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div id="app">
+<div id="app" v-cloak>
 @include('_header')
 @include('_messages')
 @yield('content')

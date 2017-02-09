@@ -26,6 +26,11 @@ window.Vue = require('vue');
  */
 
 window.axios = require('axios');
+window.api = axios.create({
+  baseURL: 'http://127.0.0.1:8000/api/',
+  timeout: 1000,
+  headers: {'X-Custom-Header': 'foobar'}
+});
 
 window.axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest'
