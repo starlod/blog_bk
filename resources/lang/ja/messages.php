@@ -72,6 +72,7 @@ return [
         'other'      => 'その他',
     ],
 
+    'user' => 'ユーザー',
     'users' => [
         'name'     => 'ユーザー名',
         'email'    => 'メールアドレス',
@@ -86,6 +87,13 @@ return [
         'title'  => 'タイトル',
         'body'   => '内容',
         'author' => '投稿者',
+    ],
+
+    'category' => 'カテゴリー',
+    'categories' => [
+        'parent_id' => '親カテゴリー',
+        'slug'      => 'スラッグ',
+        'name'      => 'カテゴリー名',
     ],
 
     /**

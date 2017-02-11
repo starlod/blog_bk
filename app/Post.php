@@ -14,16 +14,22 @@ class Post extends AppModel
      * @var array
      */
     protected $fillable = [
-        'title',
-        'body',
-        'author_id',
-        'creator_id',
-        'updater_id',
+        'category_id',      // カテゴリーID
+        'title',            // 記事タイトル
+        'body',             // 記事内容
+        'author_id',        // 投稿者ID
+        'creator_id',       // 作成者ID
+        'updater_id',       // 更新者ID
     ];
 
     public function author()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function creator()
