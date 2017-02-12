@@ -28,8 +28,20 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Category::class, function (Faker\Generator $faker) {
+    $word = $faker->word;
+    return [
+        'parent_id'   => null,
+        'slug'        => $word,
+        'name'        => $word,
+        'description' => $faker->text,
+        'count'       => 0,
+    ];
+});
+
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
+        'category_id' => App\Category::all()->random()->id,
         'title'      => $faker->text,
         'body'       => $faker->text,
         'author_id'  => App\User::all()->random()->id,

@@ -91,9 +91,11 @@ return [
 
     'category' => 'カテゴリー',
     'categories' => [
+        'id'        => 'ID',
         'parent_id' => '親カテゴリー',
         'slug'      => 'スラッグ',
         'name'      => 'カテゴリー名',
+        'count'     => 'カウント',
     ],
 
     /**

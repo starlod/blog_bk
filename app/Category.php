@@ -24,4 +24,14 @@ class Category extends AppModel
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function childs()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+
+    public function count()
+    {
+        return Post::where('category_id', $this->id)->get()->count();
+    }
 }

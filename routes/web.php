@@ -23,3 +23,11 @@ Route::get('/profile', 'UserController@profile');
 Route::put('/profile', 'UserController@profileUpdate');
 Route::get('/change_password', 'UserController@changePassword');
 Route::put('/change_password', 'UserController@changePasswordUpdate');
+
+Route::get('categories', 'CategoryController@index');
+Route::post('categories', 'CategoryController@store');
+Route::get('categories/create', 'CategoryController@create');
+Route::get('categories/{slug}', 'CategoryController@show');
+Route::put('categories/{id}', 'CategoryController@update');
+Route::delete('categories', 'CategoryController@destroy');
+Route::get('categories/{id}/edit', 'CategoryController@edit');

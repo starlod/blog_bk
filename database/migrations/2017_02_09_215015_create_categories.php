@@ -18,6 +18,8 @@ class CreateCategories extends Migration
             $table->integer('parent_id')->nullable()->comment('親カテゴリID');
             $table->string('slug')->unique()->comment('スラッグ');
             $table->string('name')->comment('カテゴリ名');
+            $table->string('description')->nullable()->comment('説明');
+            $table->integer('count')->default(0)->comment('記事件数カウント');
             $table->timestamps();
         });
     }
