@@ -18,7 +18,9 @@
     },
     "autoload": {
         "classmap": [
-            "database"
+            "app/Console/Commands",
+            "database/migrations",
+            "database/seeds"
         ],
         "psr-4": {
             "App\\": "app/"
