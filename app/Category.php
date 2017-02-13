@@ -13,6 +13,8 @@ class Category extends AppModel
         'parent_id',    // 親カテゴリID
         'slug',         // スラッグ
         'name',         // カテゴリ名
+        'description',  // 説明
+        'count',        // カウント
     ];
 
     public function post()

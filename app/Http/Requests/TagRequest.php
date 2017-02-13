@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryRequest extends FormRequest
+class TagRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'parent_id' => '',                 // 親カテゴリID
-            'slug'      => 'required|unique:categories,slug,' . $this->route('id'),  // スラッグ
-            'name'      => 'required',         // カテゴリ名
+            'slug'      => 'required|unique:tags,slug,' . $this->route('id'),  // スラッグ
+            'name'      => 'required',         // タグ名
         ];
     }
 
@@ -37,6 +36,6 @@ class CategoryRequest extends FormRequest
      */
     public function attributes()
     {
-        return \Lang::get('messages.categories');
+        return \Lang::get('messages.tags');
     }
 }

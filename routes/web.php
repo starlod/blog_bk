@@ -31,3 +31,11 @@ Route::get('categories/{slug}', 'CategoryController@show');
 Route::put('categories/{id}', 'CategoryController@update');
 Route::delete('categories', 'CategoryController@destroy');
 Route::get('categories/{id}/edit', 'CategoryController@edit');
+
+Route::get('tags', 'TagController@index');
+Route::post('tags', 'TagController@store');
+Route::get('tags/create', 'TagController@create');
+Route::get('tags/{slug}', 'TagController@show');
+Route::put('tags/{id}', 'TagController@update');
+Route::delete('tags', 'TagController@destroy');
+Route::get('tags/{id}/edit', 'TagController@edit');
