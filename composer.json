@@ -46,6 +46,10 @@
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
+        ],
+        "test": [
+            "php artisan cache:clear",
+            "phpunit --colors=always"
         ]
     },
     "config": {
