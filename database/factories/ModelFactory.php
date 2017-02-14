@@ -75,3 +75,15 @@ $factory->define(App\Comment::class, function (Faker\Generator $faker) {
         'type'      => $faker->randomElement(range(1,3)),
     ];
 });
+
+$factory->define(App\Link::class, function (Faker\Generator $faker) {
+    $url = $faker->imageUrl(640, 480);
+
+    return [
+        'name'        => $faker->word,
+        'url'         => $url,
+        'image'       => $url,
+        'target'      => $url,
+        'description' => $faker->text,
+    ];
+});
