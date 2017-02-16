@@ -16,10 +16,11 @@ class CreateLinks extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
             $table->string('name')->comment('リンク名');
-            $table->string('url')->comment('リンクURL');
-            $table->string('image')->comment('リンク画像');
-            $table->string('target')->comment('リンクターゲット');
-            $table->string('description')->comment('リンク説明');
+            $table->string('type')->default(0)->comment('種別');
+            $table->string('url')->nullable()->comment('リンクURL');
+            $table->string('image')->nullable()->comment('リンク画像');
+            $table->string('target')->nullable()->comment('リンクターゲット');
+            $table->string('description')->nullable()->comment('リンク説明');
             $table->timestamps();
         });
     }

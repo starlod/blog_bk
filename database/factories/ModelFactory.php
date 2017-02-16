@@ -81,6 +81,7 @@ $factory->define(App\Link::class, function (Faker\Generator $faker) {
 
     return [
         'name'        => $faker->word,
+        'type'        => 0,
         'url'         => $url,
         'image'       => $url,
         'target'      => $url,

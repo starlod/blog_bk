@@ -39,3 +39,6 @@ Route::get('tags/{slug}', 'TagController@show');
 Route::put('tags/{id}', 'TagController@update');
 Route::delete('tags', 'TagController@destroy');
 Route::get('tags/{id}/edit', 'TagController@edit');
+
+Route::get('images', 'ImageController@index');
+Route::post('images', 'ImageController@store');

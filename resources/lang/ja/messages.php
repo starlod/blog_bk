@@ -7,6 +7,7 @@ return [
         'logout' => 'ログアウト',
         'posts_index' => '記事一覧',
         'posts_create' => '記事投稿',
+        'images_index' => '画像管理',
         'register' => 'ユーザー登録',
         'dashboard' => 'ダッシュボード',
         'signup' => 'サインアップ',
@@ -104,6 +105,13 @@ return [
         'slug'      => 'スラッグ',
         'name'      => 'タグ名',
         'count'     => 'カウント',
+    ],
+
+    'image' => '画像',
+    'images' => [
+        'id' => 'ID',
+        'name' => '画像名',
+        'thumbnail' => 'サムネイル',
     ],
 
     /**

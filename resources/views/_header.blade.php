@@ -16,6 +16,7 @@
                 <li class="active"><a href="{{ url('/posts') }}"><i class="fa fa-list" aria-hidden="true"></i> {{ trans('messages.menu.posts_index') }}</a></li>
                 @if (Auth::check())
                     <li><a href="{{ url('/posts/create') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ trans('messages.menu.posts_create') }}</a></li>
+                    <li><a href="{{ url('/images') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> {{ trans('messages.menu.images_index') }}</a></li>
                 @endif
             </ul>
             <ul class="nav navbar-nav navbar-right hidden-sm">
