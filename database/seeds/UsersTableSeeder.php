@@ -13,10 +13,14 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->truncate();
 
-        factory(App\User::class, 1)->create([
-            'name'  => '管理者',
-            'email' => 'admin@test.jp',
-        ]);
+        $roles = App\Role::all();
+        foreach ($roles as $key => $role) {
+            $user = factory(App\User::class, 1)->create([
+                'name'  => "user$key",
+                'email' => "user$key@test.jp",
+                'role_id' => $role->id,
+            ]);
+        }
 
         factory(App\User::class, 30)->create();
     }

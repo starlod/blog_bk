@@ -6,77 +6,55 @@ use App\User;
 use App\Post;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PostPolicy extends AppPolicy
+class PostPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Create a new policy instance.
+     * Determine whether the user can view the post.
      *
-     * @return void
+     * @param  \App\User  $user
+     * @param  \App\Post  $post
+     * @return mixed
      */
-    public function __construct()
+    public function view(User $user, Post $post)
+    {
+        return false;
+    }
+
+    /**
+     * Determine whether the user can create posts.
+     *
+     * @param  \App\User  $user
+     * @return mixed
+     */
+    public function create(User $user)
+    {
+        dump('bbb');
+        return false;
+    }
+
+    /**
+     * Determine whether the user can update the post.
+     *
+     * @param  \App\User  $user
+     * @param  \App\Post  $post
+     * @return mixed
+     */
+    public function update(User $user, Post $post)
     {
         //
     }
 
     /**
-     * 一覧ページへアクセス可能かどうか
-     * @param User $user
-     * @return bool
+     * Determine whether the user can delete the post.
+     *
+     * @param  \App\User  $user
+     * @param  \App\Post  $post
+     * @return mixed
      */
-    public function index(User $user)
+    public function delete(User $user, Post $post)
     {
-        return true;
-    }
-
-    /**
-     * 作成ページへアクセス可能かどうか
-     * @param User $user
-     * @return bool
-     */
-    public function create(User $user)
-    {
-        return true;
-    }
-
-    /**
-     * 作成ページへアクセス可能かどうか
-     * @param User $user
-     * @return bool
-     */
-    public function store(User $user)
-    {
-        return true;
-    }
-
-    /**
-     * 詳細ページへアクセス可能かどうか
-     * @param User $user
-     * @return bool
-     */
-    public function show(User $user)
-    {
-        return true;
-    }
-
-    /**
-     * 更新ページへアクセス可能かどうか
-     * @param User $user
-     * @return bool
-     */
-    public function update(User $user, Post $post)
-    {
-        return $user->id === $post->author_id;
-    }
-
-    /**
-     * 削除へアクセス可能かどうか
-     * @param User $user
-     * @return bool
-     */
-    public function destroy(User $user, Post $post)
-    {
-        return $user->id === $post->author_id;
+        //
     }
 }
