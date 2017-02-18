@@ -52,8 +52,8 @@ $factory->define(App\Tag::class, function (Faker\Generator $faker) {
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
         'category_id' => App\Category::all()->random()->id,
-        'title'      => $faker->text,
-        'body'       => $faker->text,
+        'title'      => $faker->title,
+        'body'       => $faker->title,
         'author_id'  => App\User::all()->random()->id,
         'creator_id' => App\User::all()->random()->id,
         'updater_id' => App\User::all()->random()->id,

@@ -92,6 +92,8 @@ return [
 
     'fallback_locale' => 'ja',
 
+    'faker_locale' => 'ja_JP',
+
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
@@ -147,7 +149,8 @@ return [
         Illuminate\Cache\CacheServiceProvider::class,
         Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
         Illuminate\Cookie\CookieServiceProvider::class,
-        Illuminate\Database\DatabaseServiceProvider::class,
+        // Illuminate\Database\DatabaseServiceProvider::class,
+        App\Providers\DatabaseServiceProvider::class,
         Illuminate\Encryption\EncryptionServiceProvider::class,
         Illuminate\Filesystem\FilesystemServiceProvider::class,
         Illuminate\Foundation\Providers\FoundationServiceProvider::class,

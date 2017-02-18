@@ -27,10 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(FakerGenerator::class, function () {
-            return FakerFactory::create('ja_JP');
-        });
-
         if ($this->app->environment('local', 'testing')) {
             $this->app->register(DuskServiceProvider::class);
         }
