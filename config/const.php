@@ -2,11 +2,11 @@
 
 return [
     'roles' => [
-        'ROLE_DEVELOPER'     => 0,
-        'ROLE_ADMINISTRATOR' => 1,
-        'ROLE_EDITOR'        => 2,
-        'ROLE_AUTHOR'        => 3,
-        'ROLE_CONTRIBUTOR'   => 4,
-        'ROLE_SUBSCRIBER'    => 5,
+        0 => 'ROLE_DEVELOPER',
+        1 => 'ROLE_ADMINISTRATOR',
+        2 => 'ROLE_EDITOR',
+        3 => 'ROLE_AUTHOR',
+        4 => 'ROLE_CONTRIBUTOR',
+        5 => 'ROLE_SUBSCRIBER',
     ]
 ];

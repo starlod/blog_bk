@@ -73,6 +73,19 @@ return [
         'other'      => 'その他',
     ],
 
+    'role' => '権限',
+    'roles' => [
+        'name' => '権限名',
+        'names' => [
+            'ROLE_DEVELOPER'     => '開発者',
+            'ROLE_ADMINISTRATOR' => '管理者',
+            'ROLE_EDITOR'        => '編集者',
+            'ROLE_AUTHOR'        => '投稿者',
+            'ROLE_CONTRIBUTOR'   => '寄稿者',
+            'ROLE_SUBSCRIBER'    => '購読者',
+        ],
+    ],
+
     'user' => 'ユーザー',
     'users' => [
         'name'     => 'ユーザー名',

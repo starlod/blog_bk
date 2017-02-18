@@ -13,6 +13,14 @@
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
+                    <label for="name" class="col-sm-2 control-label text-right">{{ trans('messages.roles.name') }}</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">
+                            {{ trans('messages.roles.names.' . $user->role->name) }}
+                        </p>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
                     <label for="email" class="col-sm-2 control-label text-right">{{ trans('messages.users.email') }}</label>
                     <div class="col-sm-10">
                         {{ Form::text('email', $user->email, ['class' => 'form-control', 'required' => 'required', 'maxlength' => '255']) }}
