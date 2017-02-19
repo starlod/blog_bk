@@ -51,12 +51,14 @@ $factory->define(App\Tag::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
-        'category_id' => App\Category::all()->random()->id,
-        'title'      => $faker->title,
-        'body'       => $faker->title,
-        'author_id'  => App\User::all()->random()->id,
-        'creator_id' => App\User::all()->random()->id,
-        'updater_id' => App\User::all()->random()->id,
+        'category_id'  => App\Category::all()->random()->id,
+        'title'        => $faker->title,
+        'body'         => $faker->title,
+        'status'       => $faker->randomElement(config('const.status')),
+        'published_at' => $faker->dateTimeBetween('-30 days', $endDate = '30 days'),
+        'author_id'    => App\User::all()->random()->id,
+        'creator_id'   => App\User::all()->random()->id,
+        'updater_id'   => App\User::all()->random()->id,
     ];
 });
 

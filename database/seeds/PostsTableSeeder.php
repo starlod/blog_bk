@@ -13,7 +13,7 @@ class PostsTableSeeder extends Seeder
     {
         DB::table('posts')->truncate();
 
-        factory(App\Post::class, 50)->create();
+        factory(App\Post::class, 100)->create();
 
         $posts = App\Post::all();
         foreach ($posts as $post) {
