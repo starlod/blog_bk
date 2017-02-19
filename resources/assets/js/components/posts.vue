@@ -20,7 +20,7 @@
         mounted() {
             var self = this
 
-            api.get('posts').then(function (response) {
+            api.get('/posts').then(function (response) {
                 self.posts = JSON.parse(response.request.responseText)
                 console.log(self.posts);
             }).catch(function (error) {

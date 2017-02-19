@@ -1,4 +1,3 @@
-
 window._ = require('lodash');
 
 /**
@@ -27,9 +26,10 @@ window.Vue = require('vue');
 
 window.axios = require('axios');
 window.api = axios.create({
-  baseURL: 'http://127.0.0.1:8000/api/',
-  timeout: 1000,
-  headers: {'X-Custom-Header': 'foobar'}
+    // baseURL: process.env.APP_URL + '/api',
+    baseURL: 'http://127.0.0.1:8000/api',
+    timeout: 1000,
+    headers: {'X-Custom-Header': 'foobar'}
 });
 
 window.axios.defaults.headers.common = {

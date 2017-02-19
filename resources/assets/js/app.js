@@ -6,6 +6,9 @@
  */
 
 require('./bootstrap');
+require('./define');
+require('./common');
+require('./filter');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,6 +19,7 @@ require('./bootstrap');
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('posts', require('./components/posts.vue'));
 Vue.component('pagination', require('./components/pagination.vue'));
+Vue.component('upload', require('./components/upload.vue'));
 
 const app = new Vue({
     el: '#app'

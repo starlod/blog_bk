@@ -35,10 +35,14 @@ class PostController extends Controller
      */
     public function create()
     {
-        $post = new Post;
-        $users = User::all()->pluck('name', 'id');
+        if (Auth::check() && Auth::user()->can('create', Post::class)) {
+            $post = new Post;
+            $users = User::all()->pluck('name', 'id');
 
-        return View::make('posts.new')->with(compact('post', 'users'));
+            return View::make('posts.new')->with(compact('post', 'users'));
+        }
+
+        return redirect("/");
     }
 
     /**
@@ -49,12 +53,16 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $post = new Post($request->all());
-        $post->author_id = Auth::user()->id;
-        $post->save();
-        $this->success('messages.created', ['name' => '記事']);
+        if (Auth::check() && Auth::user()->can('create', Post::class)) {
+            $post = new Post($request->all());
+            $post->author_id = Auth::user()->id;
+            $post->save();
+            $this->success('messages.created', ['name' => '記事']);
 
-        return redirect("/posts/$post->id");
+            return redirect("/posts/$post->id");
+        }
+
+        return redirect("/");
     }
 
     /**

@@ -12,9 +12,9 @@
     ])--}}
 
     {{ Form::open(['url' => "/images", 'method' => 'POST', 'class' => 'well form-horizontal', 'files' => true]) }}
-        @include('images._form')
+        <upload></upload>
 
-        {{ Form::submit(trans('messages.buttons.upload'), ['class' => 'btn btn-success']) }}
+        {{-- {{ Form::submit(trans('messages.buttons.upload'), ['class' => 'btn btn-success']) }} --}}
     {{ Form::close() }}
 
     @if ($images->count() > 0)
