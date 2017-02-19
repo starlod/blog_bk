@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Log;
 use Auth;
 
 class Post extends AppModel
@@ -17,6 +18,8 @@ class Post extends AppModel
         'category_id',      // カテゴリーID
         'title',            // 記事タイトル
         'body',             // 記事内容
+        'status',           // 記事ステータス
+        'published_at',     // 公開日時
         'author_id',        // 投稿者ID
         'creator_id',       // 作成者ID
         'updater_id',       // 更新者ID
@@ -53,5 +56,16 @@ class Post extends AppModel
     public function tags()
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
+
+    /**
+     * 記事を公開する。
+     * @return [type] [description]
+     */
+    public function publish()
+    {
+        $this->status = 'PUBLIC';
+        $this->save();
+        Log::debug('記事を公開しました。', ['id' => $this->id]);
     }
 }
