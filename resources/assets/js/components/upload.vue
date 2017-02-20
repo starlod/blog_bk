@@ -13,7 +13,7 @@
                     <input type="button" value="ファイルを選択" class="btn btn-default" @click="onFileSelect">
                 </p>
             </div>
-            <input type="file" class="hidden" id="files" name="files" multiple>
+            <input type="file" class="hidden" id="files" name="files" multiple @change="onChangeFiles">
         </div>
         <p>最大アップロードサイズ: 20MB</p>
         <ul>
@@ -71,6 +71,9 @@
             onFileSelect: function(e) {
                 $('#files').click();
             },
+            onChangeFiles: function(files) {
+                console.log('onChangeFiles');
+            },
             onDragLeave: function(e) {
                 console.log('onDragLeave')
                 this.isDragging = false;
@@ -89,7 +92,7 @@
 
                 _.forEach(e.dataTransfer.files, function(file, key) {
                     self.items.push(file);
-                    var formData = new formData();
+                    var formData = new FormData();
                     formData.append("file", file);
                     api.post('/images', formData).then(function (response) {
                         console.log(response);
