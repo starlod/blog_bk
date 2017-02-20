@@ -7,18 +7,18 @@
              @drop="onDrop"
              @dragend="onDragEnd">
             <div class="drag-drop-inside">
-                <p class="drag-drop-info">ここにファイルをドロップ</p>
+                <p>ここにファイルをドロップ</p>
                 <p>または</p>
-                <p class="drag-drop-buttons">
-                    <input id="plupload-browse-button" type="button" value="ファイルを選択" class="btn btn-default" style="position: relative; z-index: 1;">
+                <p>
+                    <input type="button" value="ファイルを選択" class="btn btn-default" @click="onFileSelect">
                 </p>
             </div>
-            <input type="file" class="hide" id="files" name="files" multiple>
+            <input type="file" class="hidden" id="files" name="files" multiple>
         </div>
         <p>最大アップロードサイズ: 20MB</p>
         <ul>
             <li v-for="(item, index) in items">
-                <b>{{ item.name }}</b> {{ item.size|separate }} bytes.
+                <b>{{ item.name }}</b> {{ item.size|number_format }} bytes.
             </li>
         </ul>
     </div>
@@ -68,6 +68,9 @@
             }
         },
         methods: {
+            onFileSelect: function(e) {
+                $('#files').click();
+            },
             onDragLeave: function(e) {
                 console.log('onDragLeave')
                 this.isDragging = false;
@@ -85,28 +88,15 @@
                 var self = this
 
                 _.forEach(e.dataTransfer.files, function(file, key) {
-                    console.log(file.name);
                     self.items.push(file);
-                    var fileReader = new FileReader();
-                    fileReader.onload = function(event) {
-                        // var dropBox = document.getElementById('#drop-box');
-                        // // event.target.result に読み込んだファイルの内容が入っています.
-                        // // ドラッグ＆ドロップでファイルアップロードする場合は result の内容を Ajax でサーバに送信しましょう!
-                        // $("#droppable").text("[" + file.name + "]" + event.target.result);
-                        api.post('/images').then(function (response) {
-                            file: event.target.result
-                        }).then(function (response) {
-                            console.log(response);
-                        }).catch(function (error) {
-                            console.log(error);
-                        });
-                    }
-                    fileReader.readAsDataURL(file);
+                    var formData = new formData();
+                    formData.append("file", file);
+                    api.post('/images', formData).then(function (response) {
+                        console.log(response);
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
                 });
-
-
-                // var file = e.dataTransfer.files[0];
-                // console.log(file);
             },
             onDragEnd: function(e) {
                 console.log('onDragEnd')

@@ -46,7 +46,7 @@ class ImageController extends Controller
      * @param ImageRequest $request
      * @return View
      */
-    public function store(ImageRequest $request)
+    public function store(Request $request)
     {
         // アップロードの取得
         $path =  Storage::putFile('public/images', $request->file('file'));

@@ -22,19 +22,19 @@ window.toHankaku = function (str) {
 }
 
 /**
- * セパレート
+ * 数値フォーマット
  * @param  num 数値
+ * @param  decimals 数値
  * @return string
  */
-window.separate = function (num) {
-    num = String(num);
-    var len = num.length;
-
-    // 再帰的に呼び出すよ
-    if (len > 3) {
-        // 前半を引数に再帰呼び出し + 後半3桁
-        return separate(num.substring(0, len - 3)) + ',' + num.substring(len - 3);
+window.number_format = function (num, decimals = 0) {
+    if (decimals > 0) {
+        num = parseFloat(num).toFixed(decimals);
     } else {
-        return num;
+        num = parseInt(num);
     }
+
+    var parts = num.toString().split('.');
+    parts[0] = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+    return parts.join('.');
 }

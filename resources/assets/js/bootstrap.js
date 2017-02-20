@@ -29,7 +29,7 @@ window.api = axios.create({
     // baseURL: process.env.APP_URL + '/api',
     baseURL: 'http://127.0.0.1:8000/api',
     timeout: 1000,
-    headers: {'X-Custom-Header': 'foobar'}
+    headers: { 'content-type': 'multipart/form-data' }
 });
 
 window.axios.defaults.headers.common = {
