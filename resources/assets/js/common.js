@@ -27,7 +27,7 @@ window.toHankaku = function (str) {
  * @param  decimals 数値
  * @return string
  */
-window.number_format = function (num, decimals = 0) {
+window.numberFormat = function (num, decimals = 0) {
     if (decimals > 0) {
         num = parseFloat(num).toFixed(decimals);
     } else {
@@ -38,3 +38,4 @@ window.number_format = function (num, decimals = 0) {
     parts[0] = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
     return parts.join('.');
 }
+

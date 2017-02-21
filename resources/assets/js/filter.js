@@ -1,3 +1,3 @@
-Vue.filter('number_format', function (num, decimals = 0) {
-    return number_format(num, decimals);
+Vue.filter('numberFormat', function (num, decimals = 0) {
+    return numberFormat(num, decimals);
 });

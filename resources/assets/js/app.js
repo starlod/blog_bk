@@ -19,7 +19,7 @@ require('./filter');
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('posts', require('./components/posts.vue'));
 Vue.component('pagination', require('./components/pagination.vue'));
-Vue.component('upload', require('./components/upload.vue'));
+Vue.component('image_uploader', require('./components/image_uploader.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Http\Requests\ImageRequest;
 use App\Http\Controllers\Controller;
 use Log;
 use Storage;
@@ -17,19 +18,15 @@ class ImageController extends Controller
      * @param ImageRequest $request
      * @return View
      */
-    public function store(Request $request)
+    public function store(ImageRequest $request)
     {
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $path =  Storage::putFile('public/images', $file);
-            $link = new Link();
-            $link->name = 'テスト画像';
-            $link->image = $path;
-            $link->save();
-            Log::info('uploaded.', compact('path'));
-        } else {
-            Log::info('have not file.');
-        }
+        $file = $request->file('file');
+        $path = Storage::putFile('public/images', $file);
+        $link = new Link();
+        $link->name = $file->getClientOriginalName();
+        $link->image = $path;
+        $link->save();
+        Log::info('uploaded.', compact('path'));
 
         return new Response();
     }

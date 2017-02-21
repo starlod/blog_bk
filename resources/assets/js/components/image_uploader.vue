@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="well">
         <div id="drop-box" class="drop-box"
              v-bind:class="{ dragging: isDragging }"
              @dragleave="onDragLeave"
@@ -15,16 +15,19 @@
             </div>
             <input type="file" class="hidden" id="files" name="files" multiple @change="onChangeFiles">
         </div>
-        <p>最大アップロードサイズ: 20MB</p>
+        <p class="form-control-static">最大アップロードサイズ: 20MB</p>
         <ul>
             <li v-for="(item, index) in items">
-                <b>{{ item.name }}</b> {{ item.size|number_format }} bytes.
+                <b>{{ item.name }}</b> {{ item.size|numberFormat }} bytes.
+            </li>
+            <li v-for="(error, index) in errors">
+                <b>{{ error }}</b>
             </li>
         </ul>
     </div>
 </template>
 
-<style lang="css">
+<style lang="scss">
 
 .drop-box {
     position: relative;
@@ -57,53 +60,67 @@
         data() {
             return {
                 items: [],
+                errors: [],
                 isDragging: false
             }
         },
         mounted() {
-            var self = this
-
             if (!window.FileReader) {
                 alert("File API がサポートされていません。");
             }
         },
         methods: {
             onFileSelect: function(e) {
-                $('#files').click();
+                document.getElementById('files').click();
             },
             onChangeFiles: function(files) {
-                console.log('onChangeFiles');
+                var self = this;
+                _.forEach(document.getElementById('files').files, function(file, key) {
+                    if (self.isValid(file)) {
+                        self.saveUploadFile(file);
+                    }
+                });
+
+                this.isDragging = false;
             },
             onDragLeave: function(e) {
-                console.log('onDragLeave')
                 this.isDragging = false;
             },
             onDragOver: function(e) {
-                console.log('onDragOver')
                 e.stopPropagation();
                 e.preventDefault();
                 e.dataTransfer.dropEffect = 'copy';
                 this.isDragging = true;
             },
             onDrop: function(e) {
-                console.log('onDrop')
                 e.preventDefault();
-                var self = this
+                var self = this;
 
                 _.forEach(e.dataTransfer.files, function(file, key) {
-                    self.items.push(file);
-                    var formData = new FormData();
-                    formData.append("file", file);
-                    api.post('/images', formData).then(function (response) {
-                        console.log(response);
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
+                    if (self.isValid(file)) {
+                        self.saveUploadFile(file);
+                    }
                 });
+
+                this.isDragging = false;
             },
             onDragEnd: function(e) {
-                console.log('onDragEnd')
                 e.preventDefault();
+                this.isDragging = false;
+            },
+            isValid: function(file) {
+                // あとでバリデーションを書く
+                return true;
+            },
+            saveUploadFile: function(file) {
+                var self = this;
+                var formData = new FormData();
+                formData.append("file", file);
+                api.post('/images', formData).then(function (response) {
+                    self.items.push(file);
+                }).catch(function (error) {
+                    self.errors.push(file.name + ' ファイルのアップロードに失敗しました。');
+                });
             }
         },
     }

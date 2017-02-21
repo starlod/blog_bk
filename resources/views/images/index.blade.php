@@ -11,9 +11,7 @@
         ]
     ])--}}
 
-    {{ Form::open(['url' => "/images", 'method' => 'POST', 'class' => 'well form-horizontal', 'files' => true]) }}
-        <upload></upload>
-    {{ Form::close() }}
+    <image_uploader></image_uploader>
 
     @if ($images->count() > 0)
         <table class="table table-striped table-hover">
