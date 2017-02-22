@@ -20,6 +20,7 @@ Vue.component('example', require('./components/Example.vue'));
 Vue.component('posts', require('./components/posts.vue'));
 Vue.component('pagination', require('./components/pagination.vue'));
 Vue.component('image_uploader', require('./components/image_uploader.vue'));
+Vue.component('images', require('./components/images.vue'));
 
 const app = new Vue({
     el: '#app'

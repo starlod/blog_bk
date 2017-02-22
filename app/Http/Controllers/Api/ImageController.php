@@ -13,6 +13,21 @@ use App\Link;
 class ImageController extends Controller
 {
     /**
+     * イメージ 一覧
+     *
+     * @return View
+     */
+    public function index(Request $request)
+    {
+        $images = Link::orderby('updated_at', 'desc')->get();
+        if ($images->count() === 0) {
+            return [];
+        }
+
+        return $images->toJson();
+    }
+
+    /**
      * イメージ 追加
      *
      * @param ImageRequest $request
@@ -21,10 +36,10 @@ class ImageController extends Controller
     public function store(ImageRequest $request)
     {
         $file = $request->file('file');
-        $path = Storage::putFile('public/images', $file);
+        $path = Storage::disk('public')->putFile('images', $file);
         $link = new Link();
         $link->name = $file->getClientOriginalName();
-        $link->image = $path;
+        $link->path = $path;
         $link->save();
         Log::info('uploaded.', compact('path'));
 

@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\DBInit::class,
         Commands\PostPublish::class,
+        Commands\StorageClear::class,
     ];
 
     /**

@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('posts', 'Api\PostController');
 Route::resource('posts/{id}/comments', 'Api\CommentController');
+Route::get('images', 'Api\ImageController@index');
 Route::post('images', 'Api\ImageController@store');

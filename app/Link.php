@@ -16,16 +16,25 @@ class Link extends AppModel
      * @var array
      */
     protected $fillable = [
-        'name',         // リンク名
         'type',         // ファイル種別
+        'name',         // リンク名
         'url',          // リンクURL
-        'image',        // リンク画像
+        'path',         // リンク画像パス
         'target',       // リンクターゲット
         'description',  // リンク説明
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function($model) {
+            $model->url = Storage::disk('public')->url($model->path);
+        });
+    }
+
     public function url()
     {
-        return $this->url ?: Storage::url($this->image);;
+        return $this->url ?: Storage::disk('public')->url($this->path);
     }
 }

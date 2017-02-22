@@ -12,7 +12,6 @@ class LinksTableSeeder extends Seeder
     public function run()
     {
         DB::table('links')->truncate();
-
-        factory(App\Link::class, 30)->create();
+        Artisan::call('storage:clear');
     }
 }

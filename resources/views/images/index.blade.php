@@ -12,27 +12,7 @@
     ])--}}
 
     <image_uploader></image_uploader>
-
-    @if ($images->count() > 0)
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>{{ trans('messages.images.id') }}</th>
-                    <th>{{ trans('messages.images.name') }}</th>
-                    <th>{{ trans('messages.images.thumbnail') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($images as $image)
-                    <tr>
-                        <td>{{ $image->id }}</td>
-                        <td>{{ $image->name }}</td>
-                        <td><img src="{{ $image->url() }}" alt="{{ $image->name }}" width="200" height="150"></td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @endif
+    <images></images>
 </div>
 
 @endsection

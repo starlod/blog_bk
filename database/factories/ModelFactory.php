@@ -78,15 +78,14 @@ $factory->define(App\Comment::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Link::class, function (Faker\Generator $faker) {
-    $url = $faker->imageUrl(640, 480);
-
-    return [
-        'name'        => $faker->word,
-        'type'        => 0,
-        'url'         => $url,
-        'image'       => $url,
-        'target'      => $url,
-        'description' => $faker->text,
-    ];
-});
+// $factory->define(App\Link::class, function (Faker\Generator $faker) {
+//     $url = $faker->imageUrl(640, 480);
+//     return [
+//         'name'        => $faker->word,
+//         'type'        => 0,
+//         'url'         => $url,
+//         'path'        => $url,
+//         'target'      => $url,
+//         'description' => $faker->text,
+//     ];
+// });
