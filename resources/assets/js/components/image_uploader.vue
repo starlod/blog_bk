@@ -1,5 +1,5 @@
 <template>
-    <div class="well">
+    <div id="image_uploader" class="well">
         <div id="drop-box" class="drop-box"
              v-bind:class="{ dragging: isDragging }"
              @dragleave="onDragLeave"
@@ -118,6 +118,7 @@
                 formData.append("file", file);
                 api.post('/images', formData).then(function (response) {
                     self.items.push(file);
+                    self.$emit('onUploaded');
                 }).catch(function (error) {
                     self.errors.push(file.name + ' ファイルのアップロードに失敗しました。');
                 });

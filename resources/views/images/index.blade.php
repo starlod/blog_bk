@@ -11,7 +11,6 @@
         ]
     ])--}}
 
-    <image_uploader></image_uploader>
     <images></images>
 </div>
 

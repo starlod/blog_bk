@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div id="images">
+        <image_uploader v-on:onUploaded="load"></image_uploader>
         <table class="table table-striped table-hover" v-if="images.length > 0">
             <thead>
                 <tr>
@@ -12,7 +13,7 @@
                 <tr v-for="image in images">
                     <td>{{ image.id }}</td>
                     <td>{{ image.name }}</td>
-                    <td><img :src="image.url" :alt="image.name" width="200" height="150"></td>
+                    <td><a :href="image.url" target="_blank"><img :src="image.url" :alt="image.name" width="75" height="75"></a></td>
                 </tr>
             </tbody>
         </table>
@@ -26,7 +27,7 @@
     export default {
         data() {
             return {
-                images: [],
+                images: []
             }
         },
         mounted() {

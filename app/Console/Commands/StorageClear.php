@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use DB;
 use Log;
 use File;
 
@@ -39,6 +40,7 @@ class StorageClear extends Command
      */
     public function handle()
     {
+        DB::table('links')->truncate();
         $files = File::allFiles(storage_path('app/public'));
 
         foreach ($files as $file) {
