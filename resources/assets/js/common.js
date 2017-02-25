@@ -1,4 +1,15 @@
 /**
+ * 型判定
+ * @param  type
+ * @param  obj
+ * @return Boolean
+ */
+window.is = function (type, obj) {
+    var clas = Object.prototype.toString.call(obj).slice(8, -1);
+    return obj !== undefined && obj !== null && clas === type;
+}
+
+/**
  * 全角から半角への変革関数
  * 入力値の英数記号を半角変換して返却
  * @param   str: 入力値
@@ -39,3 +50,18 @@ window.numberFormat = function (num, decimals = 0) {
     return parts.join('.');
 }
 
+/**
+ * URLパラメーターを取得し配列に格納しておく
+ *
+ * @return array
+ */
+window.getParameters = function () {
+    var arg = new Object;
+    var pair = location.search.substring(1).split('&');
+    for(var i = 0; pair[i]; i++) {
+        var kv = pair[i].split('=');
+        arg[kv[0]] = kv[1];
+    }
+
+    return arg;
+}

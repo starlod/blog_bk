@@ -1,21 +1,78 @@
 <template>
     <nav>
         <ul class="pagination">
-            <li>
-                <a href="#" aria-label="前のページへ">
-                    <span aria-hidden="true">«</span>
+            <li :class="{disabled: current_page === 1}">
+                <a @click="load(current_page - 1)" aria-label="前のページへ">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
                 </a>
             </li>
-            <li><a href="#">1</a></li>
-            <li class="active"><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li>
-                <a href="#" aria-label="次のページへ">
-                    <span aria-hidden="true">»</span>
+            <li v-for="n in last_page"
+                :class="n === current_page ? 'active' : ''">
+                <a @click="load(n)">{{ n }}</a>
+            </li>
+            <li :class="{disabled: current_page === last_page}">
+                <a @click="load(current_page + 1)" aria-label="次のページへ">
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                 </a>
             </li>
         </ul>
     </nav>
 </template>
+
+<script>
+
+    export default {
+        props: {
+            url: {
+                type: String,
+                required: true,
+            }
+        },
+        data() {
+            return {
+                current_page: 1,
+                last_page: 0,
+            }
+        },
+        mounted() {
+            let parameters = getParameters();
+            var page = 1;
+            if (parameters.page) {
+                page = parameters.page
+            }
+            this.load(page);
+        },
+        computed: {
+        },
+        methods: {
+            isActive: function(n) {
+                return n === current_page;
+            },
+            load: function(page = 1) {
+                var self = this;
+
+                if (this.last_page !== 0 && page > this.last_page) {
+                    return false;
+                } else if (page < 1) {
+                    return false;
+                }
+
+                api.get(this.url, {
+                    params: {
+                        page: page
+                    }
+                }).then(function (response) {
+                    let json = JSON.parse(response.request.responseText);
+                    self.$parent.items = json.data;
+                    self.makePagination(json);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            makePagination: function(json) {
+                this.current_page = json.current_page;
+                this.last_page = json.last_page;
+            }
+        }
+    }
+</script>

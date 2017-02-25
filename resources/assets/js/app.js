@@ -6,7 +6,6 @@
  */
 
 require('./bootstrap');
-require('./define');
 require('./common');
 require('./filter');
 
@@ -21,6 +20,8 @@ Vue.component('posts', require('./components/posts.vue'));
 Vue.component('pagination', require('./components/pagination.vue'));
 Vue.component('image_uploader', require('./components/image_uploader.vue'));
 Vue.component('images', require('./components/images.vue'));
+
+Vue.config.devtools = true;
 
 const app = new Vue({
     el: '#app'

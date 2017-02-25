@@ -1,7 +1,7 @@
 <template>
     <div id="images">
-        <image_uploader v-on:onUploaded="load"></image_uploader>
-        <table class="table table-striped table-hover" v-if="images.length > 0">
+        <image_uploader></image_uploader>
+        <table class="table table-striped table-hover" v-if="items.length > 0">
             <thead>
                 <tr>
                     <th>id</th>
@@ -10,16 +10,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="image in images">
-                    <td>{{ image.id }}</td>
-                    <td>{{ image.name }}</td>
-                    <td><a :href="image.url" target="_blank"><img :src="image.url" :alt="image.name" width="75" height="75"></a></td>
+                <tr v-for="item in items">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td><a :href="item.url" target="_blank"><img :src="item.url" :alt="item.name" width="75" height="75"></a></td>
                 </tr>
             </tbody>
         </table>
+
         <p v-else>画像がありません。</p>
 
-        <pagination></pagination>
+        <pagination url="/images"></pagination>
     </div>
 </template>
 
@@ -27,21 +28,12 @@
     export default {
         data() {
             return {
-                images: []
+                items: []
             }
         },
         mounted() {
-            this.load();
         },
         methods: {
-            load: function() {
-                var self = this;
-                api.get('/images').then(function (response) {
-                    self.images = JSON.parse(response.request.responseText);
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            }
         }
     }
 </script>

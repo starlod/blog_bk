@@ -19,12 +19,7 @@ class ImageController extends Controller
      */
     public function index(Request $request)
     {
-        $images = Link::orderby('updated_at', 'desc')->get();
-        if ($images->count() === 0) {
-            return [];
-        }
-
-        return $images->toJson();
+        return Link::orderby('updated_at', 'desc')->paginate(20)->toJson();
     }
 
     /**
