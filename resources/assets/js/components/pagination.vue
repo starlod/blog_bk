@@ -1,17 +1,32 @@
 <template>
     <nav>
-        <ul class="pagination">
-            <li :class="{disabled: current_page === 1}">
-                <a @click="load(current_page - 1)" aria-label="前のページへ">
+        <ul class="pagination" v-show="last_page > 0">
+            <li class="disabled">
+                <a>
+                    {{ current_page }}/{{ last_page }}
+                </a>
+            </li>
+            <li v-show="current_page > 2">
+                <a @click="load(1)" aria-label="最初のページへ">
                     <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li v-show="current_page > 1">
+                <a @click="load(current_page - 1)" aria-label="前のページへ">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
                 </a>
             </li>
             <li v-for="n in last_page"
                 :class="n === current_page ? 'active' : ''">
                 <a @click="load(n)">{{ n }}</a>
             </li>
-            <li :class="{disabled: current_page === last_page}">
+            <li v-show="current_page < last_page">
                 <a @click="load(current_page + 1)" aria-label="次のページへ">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li v-show="current_page < last_page - 1">
+                <a @click="load(1)" aria-label="最後のページへ">
                     <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                 </a>
             </li>
