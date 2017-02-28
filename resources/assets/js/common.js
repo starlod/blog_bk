@@ -55,7 +55,7 @@ window.numberFormat = function (num, decimals = 0) {
  *
  * @return array
  */
-window.getParameters = function () {
+window.params = function () {
     var arg = new Object;
     var pair = location.search.substring(1).split('&');
     for(var i = 0; pair[i]; i++) {

@@ -11,7 +11,7 @@
         ]
     ])--}}
 
-    <images></images>
+    <items url="/images"></items>
 </div>
 
 @endsection

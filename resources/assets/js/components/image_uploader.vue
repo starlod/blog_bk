@@ -1,7 +1,7 @@
 <template>
     <div id="image_uploader" class="well">
         <div id="drop-box" class="drop-box"
-             v-bind:class="{ dragging: isDragging }"
+             :class="{ dragging: isDragging }"
              @dragleave="onDragLeave"
              @dragover="onDragOver"
              @drop="onDrop"

@@ -10,21 +10,5 @@
 @import "node_modules/font-awesome/scss/font-awesome";
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+@import "common";
 @import "top";
-
-.navbar {
-    border-radius: 0px;
-}
-
-footer {
-    background-color: #aaa;
-    height: 50px;
-    text-align: center;
-    line-height: 50px;
-    color : #fff;
-    margin-top:30px;
-}
-
-[v-cloak] {
-    display: none;
-}

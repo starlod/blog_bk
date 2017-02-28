@@ -1,6 +1,6 @@
 <template>
     <div id="images">
-        <image_uploader></image_uploader>
+        <image_uploader @onUploaded="reload"></image_uploader>
         <table class="table table-striped table-hover" v-if="items.length > 0">
             <thead>
                 <tr>
@@ -19,21 +19,28 @@
         </table>
 
         <p v-else>画像がありません。</p>
-
-        <pagination url="/images"></pagination>
     </div>
 </template>
 
 <script>
     export default {
+        props: {
+            items: {
+                type: Array,
+                required: true,
+            }
+        },
         data() {
             return {
-                items: []
+
             }
         },
         mounted() {
         },
         methods: {
+            reload: function () {
+                this.$parent.reload();
+            }
         }
     }
 </script>
