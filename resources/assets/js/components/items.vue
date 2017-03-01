@@ -1,6 +1,7 @@
 <template>
     <div id="items">
-        <images :items="items"></images>
+        <posts :items="items" v-if="url === '/posts'"></posts>
+        <images :items="items" v-if="url === '/images'"></images>
 
         <pagination :pagination="pagination"></pagination>
     </div>

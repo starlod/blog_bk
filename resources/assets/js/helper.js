@@ -15,7 +15,7 @@ window.is = function (type, obj) {
  * @param   str: 入力値
  * @return String(): 半角変換された文字列
  */
-window.toHankaku = function (str) {
+window.to_hankaku = function (str) {
     // 半角変換
     var halfVal = str.replace(/[！-～]/g,
         function( tmpStr ) {
@@ -38,7 +38,7 @@ window.toHankaku = function (str) {
  * @param  decimals 数値
  * @return string
  */
-window.numberFormat = function (num, decimals = 0) {
+window.number_format = function (num, decimals = 0) {
     if (decimals > 0) {
         num = parseFloat(num).toFixed(decimals);
     } else {
@@ -48,6 +48,20 @@ window.numberFormat = function (num, decimals = 0) {
     var parts = num.toString().split('.');
     parts[0] = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
     return parts.join('.');
+}
+
+/**
+ * 日付フォーマット
+ *
+ * @param  date 数値
+ * @param  format 文字列
+   * YYYY年MM月DD日 HH => 2017年01月01日
+   * YY年M月D日 => 17年1月1日
+ * @param  lang ロケール
+ * @return string
+ */
+window.date_format = function (date, format = DATE_FORMAT, lang = 'ja') {
+    return moment(date).format(format);
 }
 
 /**

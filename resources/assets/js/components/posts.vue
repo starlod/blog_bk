@@ -1,31 +1,43 @@
 <template>
-    <div>
-        <div class="posts panel panel-primary" v-for="post in posts">
-            <div class="title panel-heading">{{ post.title }}</div>
-            <div class="panel-body">
-                {{ post.body }}
-            </div>
-        </div>
-        <pagination></pagination>
+    <div id="posts">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>タイトル</th>
+                    <th>内容</th>
+                    <th>投稿者</th>
+                    <th>更新日</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in items">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.content }}</td>
+                    <td>{{ item.author.name }}</td>
+                    <td>{{ item.updated_at }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
 <script>
     export default {
+        props: {
+            items: {
+                type: Array,
+                required: true,
+            }
+        },
         data() {
             return {
-                posts: []
             }
         },
         mounted() {
-            var self = this
-
-            api.get('/posts').then(function (response) {
-                self.posts = JSON.parse(response.request.responseText)
-                console.log(self.posts);
-            }).catch(function (error) {
-                console.log(error);
-            })
+        },
+        methods: {
         }
     }
 </script>

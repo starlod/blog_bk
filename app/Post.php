@@ -17,7 +17,7 @@ class Post extends AppModel
     protected $fillable = [
         'category_id',      // カテゴリーID
         'title',            // 記事タイトル
-        'body',             // 記事内容
+        'content',          // 記事内容
         'status',           // 記事ステータス
         'published_at',     // 公開日時
         'author_id',        // 投稿者ID

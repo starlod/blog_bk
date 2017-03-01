@@ -14,12 +14,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::orderby('updated_at', 'desc')->get();
-        if ($posts->count() === 0) {
-            return [];
-        }
-
-        return $posts->toJson();
+        return Post::with('author')->orderby('updated_at', 'desc')->paginate(20)->toJson();
     }
 
     /**

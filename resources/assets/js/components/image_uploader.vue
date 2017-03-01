@@ -18,7 +18,7 @@
         <p class="form-control-static">最大アップロードサイズ: 20MB</p>
         <ul>
             <li v-for="(item, index) in items">
-                <b>{{ item.name }}</b> {{ item.size|numberFormat }} bytes.
+                <b>{{ item.name }}</b> {{ item.size|number_format }} bytes.
             </li>
             <li v-for="(error, index) in errors">
                 <b>{{ error }}</b>
@@ -70,10 +70,10 @@
             }
         },
         methods: {
-            onFileSelect: function(e) {
+            onFileSelect(e) {
                 document.getElementById('files').click();
             },
-            onChangeFiles: function(files) {
+            onChangeFiles(files) {
                 var self = this;
                 _.forEach(document.getElementById('files').files, function(file, key) {
                     if (self.isValid(file)) {
@@ -83,16 +83,16 @@
 
                 this.isDragging = false;
             },
-            onDragLeave: function(e) {
+            onDragLeave(e) {
                 this.isDragging = false;
             },
-            onDragOver: function(e) {
+            onDragOver(e) {
                 e.stopPropagation();
                 e.preventDefault();
                 e.dataTransfer.dropEffect = 'copy';
                 this.isDragging = true;
             },
-            onDrop: function(e) {
+            onDrop(e) {
                 e.preventDefault();
                 var self = this;
 
@@ -104,15 +104,15 @@
 
                 this.isDragging = false;
             },
-            onDragEnd: function(e) {
+            onDragEnd(e) {
                 e.preventDefault();
                 this.isDragging = false;
             },
-            isValid: function(file) {
+            isValid(file) {
                 // あとでバリデーションを書く
                 return true;
             },
-            saveUploadFile: function(file) {
+            saveUploadFile(file) {
                 var self = this;
                 var formData = new FormData();
                 formData.append("file", file);

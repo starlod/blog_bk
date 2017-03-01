@@ -38,7 +38,7 @@
         mounted() {
         },
         methods: {
-            reload: function () {
+            reload() {
                 this.$parent.reload();
             }
         }
