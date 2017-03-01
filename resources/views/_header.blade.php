@@ -14,10 +14,12 @@
         <div class="collapse navbar-collapse" id="navbarEexample">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ url('/posts') }}"><i class="fa fa-list" aria-hidden="true"></i> {{ trans('messages.menu.posts_index') }}</a></li>
-                @if (Auth::check())
+                @can('create', App\Post::class)
                     <li><a href="{{ url('/posts/create') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ trans('messages.menu.posts_create') }}</a></li>
+                @endcan
+                @can('create', App\Link::class)
                     <li><a href="{{ url('/images') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> {{ trans('messages.menu.images_index') }}</a></li>
-                @endif
+                @endcan
             </ul>
             <ul class="nav navbar-nav navbar-right hidden-sm">
                 @if (Auth::check())

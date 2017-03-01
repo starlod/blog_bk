@@ -1,5 +1,21 @@
+// Sticky footer
+html {
+    height: 100%;
+}
+
+#app {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+// footer layout
 footer {
-    background-color: #aaa;
+    background-color: #111;
     height: 50px;
     text-align: center;
     line-height: 50px;
