@@ -16,7 +16,7 @@ class CreatePosts extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
             $table->string('title')->index()->comment('記事タイトル');
-            $table->text('body')->nullable()->comment('記事内容');
+            $table->text('content')->nullable()->comment('記事内容');
             $table->timestamps();
         });
     }

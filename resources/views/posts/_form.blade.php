@@ -6,7 +6,7 @@
 
 <fieldset class="form-group">
     <div class="col-xs-12">
-        {{ Form::textarea('body', $post->body, ['class' => 'form-control', 'required' => 'required']) }}
+        {{ Form::textarea('content', $post->content, ['class' => 'form-control', 'required' => 'required']) }}
     </div>
 </fieldset>
 {{--

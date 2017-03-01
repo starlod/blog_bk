@@ -14,7 +14,7 @@ class AddColumnPostsStatus extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('status')->default('publish')->after('body')->comment('記事ステータス');
+            $table->string('status')->default('publish')->after('content')->comment('記事ステータス');
             $table->dateTime('published_at')->default(DB::raw('CURRENT_TIMESTAMP'))->after('status')->comment('投稿日時');
         });
     }

@@ -14,7 +14,7 @@ class AddPostsUserId extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->integer('author_id')->nullable()->after('body')->comment('著者ID');
+            $table->integer('author_id')->nullable()->after('content')->comment('著者ID');
             $table->integer('creator_id')->nullable()->after('author_id')->comment('作成者ID');
             $table->integer('updater_id')->nullable()->after('creator_id')->comment('更新者ID');
         });
