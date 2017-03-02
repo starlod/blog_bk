@@ -17,12 +17,7 @@ class ImageController extends Controller
      */
     public function index(Request $request)
     {
-        $images = Link::ordered()->get();
-        if ($images->count() === 0) {
-            $this->info('messages.no_images');
-        }
-
-        return View::make('images.index')->with(compact('images'));
+        return View::make('images.index');
     }
 
     /**
