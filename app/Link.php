@@ -31,6 +31,10 @@ class Link extends AppModel
         static::saving(function($model) {
             $model->url = Storage::disk('public')->url($model->path);
         });
+
+        static::deleting(function($model) {
+            Storage::disk('public')->delete($model->path);
+        });
     }
 
     public function url()

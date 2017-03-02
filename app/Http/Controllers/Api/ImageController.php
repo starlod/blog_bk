@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests\ImageRequest;
-use App\Http\Controllers\Controller;
 use Log;
 use Storage;
 use App\Link;
@@ -37,6 +36,21 @@ class ImageController extends Controller
         $link->path = $path;
         $link->save();
         Log::info('uploaded.', compact('path'));
+
+        return new Response();
+    }
+
+    /**
+     * イメージ 削除
+     *
+     * @param Request $request
+     * @return View
+     */
+    public function destroy(Request $request)
+    {
+        if ($link = Link::find($request->image)) {
+            $link->delete();
+        }
 
         return new Response();
     }
