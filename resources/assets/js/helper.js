@@ -1,4 +1,32 @@
 /**
+ * ログ
+ */
+window.d = function (message = '') {
+    console.debug('[' + moment().format(DATE_FORMAT) + '] ' + message);
+}
+
+/**
+ * エラーログ
+ */
+window.error = function (message = '') {
+    console.error('[' + moment().format(DATE_FORMAT) + '] ' + message);
+}
+
+/**
+ * タイマースタート
+ */
+window.start = function (name = 'timer') {
+    console.time(name);
+}
+
+/**
+ * タイマーストップ
+ */
+window.end = function (name = 'timer') {
+    console.timeEnd(name);
+}
+
+/**
  * 型判定
  * @param  type
  * @param  obj
