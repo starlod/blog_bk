@@ -21,6 +21,7 @@ Vue.component('pagination', require('./components/pagination.vue'));
 Vue.component('image_uploader', require('./components/image_uploader.vue'));
 Vue.component('images', require('./components/images.vue'));
 Vue.component('items', require('./components/items.vue'));
+Vue.component('gallery', require('./components/gallery.vue'));
 
 Vue.config.devtools = true;
 

@@ -21,6 +21,16 @@ class ImageController extends Controller
     }
 
     /**
+     * イメージ 一覧
+     *
+     * @return View
+     */
+    public function gallery(Request $request)
+    {
+        return View::make('images.gallery');
+    }
+
+    /**
      * イメージ 新規
      *
      * @param Integer $id

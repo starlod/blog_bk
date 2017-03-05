@@ -42,3 +42,4 @@ Route::get('tags/{id}/edit', 'TagController@edit');
 
 Route::get('images', 'ImageController@index');
 Route::post('images', 'ImageController@store');
+Route::get('gallery', 'ImageController@gallery');

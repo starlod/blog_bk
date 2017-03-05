@@ -22,6 +22,16 @@ class ImageController extends Controller
     }
 
     /**
+     * イメージ 一覧
+     *
+     * @return View
+     */
+    public function gallery(Request $request)
+    {
+        return Link::orderby('updated_at', 'desc')->paginate(20)->toJson();
+    }
+
+    /**
      * イメージ 追加
      *
      * @param ImageRequest $request

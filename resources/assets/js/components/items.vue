@@ -2,6 +2,7 @@
     <div id="items">
         <posts :items="items" v-if="url === '/posts'"></posts>
         <images :items="items" v-if="url === '/images'"></images>
+        <gallery :items="items" v-if="url === '/gallery'"></gallery>
 
         <pagination :pagination="pagination"></pagination>
     </div>
@@ -46,11 +47,18 @@
                     self.items = json.data;
                     self.makePagination(json);
                 }).catch(function (error) {
-                    console.log(error);
+                    console.error(error);
                 });
             },
             reload() {
                 this.load(this.pagination.current_page);
+                d('reload');
+            },
+            autoReload() {
+                var self = this;
+                setInterval(function() {
+                    self.reload();
+                }, 15000);
             },
             makePagination(json) {
                 this.pagination.current_page = json.current_page;
