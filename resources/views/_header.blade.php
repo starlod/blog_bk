@@ -13,7 +13,8 @@
 
         <div class="collapse navbar-collapse" id="navbarEexample">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ url('/posts') }}"><i class="fa fa-list" aria-hidden="true"></i> {{ trans('messages.menu.posts_index') }}</a></li>
+                <li @if (Request::url() === url('/posts')) class="active" @endif><a href="{{ url('/posts') }}"><i class="fa fa-list" aria-hidden="true"></i> {{ trans('messages.menu.posts_index') }}</a></li>
+                <li @if (Request::url() === url('/gallery')) class="active" @endif><a href="{{ url('/gallery') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> {{ trans('messages.menu.gallery') }}</a></li>
                 @can('create', App\Post::class)
                     <li><a href="{{ url('/posts/create') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ trans('messages.menu.posts_create') }}</a></li>
                 @endcan

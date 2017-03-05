@@ -7,6 +7,7 @@ return [
         'logout' => 'ログアウト',
         'posts_index' => '記事一覧',
         'posts_create' => '記事投稿',
+        'gallery' => 'ギャラリー',
         'images_index' => '画像管理',
         'register' => 'ユーザー登録',
         'dashboard' => 'ダッシュボード',
