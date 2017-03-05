@@ -38,6 +38,7 @@
             }
         },
         mounted() {
+            this.$parent.autoReload();
         },
         methods: {
             reload() {
