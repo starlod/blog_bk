@@ -30,24 +30,18 @@
 <style lang="scss">
 
 .drop-box {
-    position: relative;
     background-color: #f5f5f5;
     border: 4px dashed #b4b9be;
     border-radius: 10px;
     width: 100%;
     height: 200px;
+    display: flex;
+    flex-direction: column-reverse;
 }
 .dragging {
     border-color: #1aa;
 }
 .drag-drop-inside {
-    position: absolute;
-    width: 400px;
-    height: 120px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
 }
 .drag-drop-inside p {
     text-align: center;
