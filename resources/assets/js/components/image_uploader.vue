@@ -1,5 +1,5 @@
 <template>
-    <div id="image_uploader" class="well">
+    <div id="image_uploader" class="well m-b-0">
         <div id="drop-box" class="drop-box"
              :class="{ dragging: isDragging }"
              @dragleave="onDragLeave"
@@ -16,7 +16,7 @@
             <input type="file" class="hidden" id="files" name="files" multiple @change="onChangeFiles">
         </div>
         <p class="form-control-static">最大アップロードサイズ: 20MB</p>
-        <ul>
+        <ul v-if="items.length > 0">
             <li v-for="(item, index) in items">
                 <b>{{ item.name }}</b> {{ item.size|number_format }} bytes.
             </li>
