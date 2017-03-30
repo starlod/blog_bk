@@ -61,12 +61,6 @@ user = root
 password = *****
 ```
 
-# ショートカットリンクを作成
-
-```
-$ ln -s /var/www/html/laravel ~/laravel
-```
-
 # Box化
 
 - `Vagrantfile`の共有フォルダの設定を無効化する。

@@ -22,7 +22,7 @@ yum -y install httpd
 
 # PHP7.1
 yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
-yum -y install --enablerepo=remi-php71 php php-cli php-common php-gd php-xml php-pdo php-mbstring php-mysqlnd php-opcache php-pecl-apcu php-devel php-fpm php-gmp php-intl php-pear php-zip
+yum -y install --enablerepo=remi-php71 php php-cli php-common php-gd php-xml php-pdo php-mbstring php-mysqlnd php-opcache php-pecl-apcu php-devel php-fpm php-gmp php-intl php-pear php-zip php-xdebug
 
 # MySQL5.7
 yum -y localinstall https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
@@ -34,6 +34,28 @@ yum -y install mysql-community-server mysql-community-devel
 # yum-config-manager --disable mysql57-community
 # yum-config-manager --enable mysql56-community
 # yum -y install mysql-community-server mysql-community-devel
+
+# Ruby2.4.1
+yum remove ruby
+yum -y install gcc zlib-devel openssl-devel sqlite sqlite-devel mysql-devel readline-devel libffi-devel
+
+wget http://cache.ruby-lang.org/pub/ruby/ruby-2.4.1.zip
+unzip ruby-2.4.1.zip
+rm -rf ruby-2.4.1.zip
+cd ruby-2.4.1
+./configure
+make
+make install
+
+ln -s /usr/local/bin/ruby /usr/bin/ruby
+ln -s /usr/local/bin/bundle /usr/bin/bundle
+ln -s /usr/local/bin/gem /usr/bin/gem
+
+cd ../
+rm -rf ruby-2.4.1
+
+gem update --system
+gem update
 
 # ファイアウォール
 yum -y install firewalld
@@ -74,6 +96,7 @@ cp /etc/chrony.conf /etc/chrony.conf.org
 cp /var/www/html/laravel/shell/config/etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf
 cp /var/www/html/laravel/shell/config/etc/httpd/conf.d/laravel.conf /etc/httpd/conf.d/laravel.conf
 cp /var/www/html/laravel/shell/config/etc/php.ini /etc/php.ini
+cp /var/www/html/laravel/shell/config/etc/php.d/xdebug.ini /etc/php.d/xdebug.ini
 cp /var/www/html/laravel/shell/config/etc/my.cnf /etc/my.cnf
 cp /var/www/html/laravel/shell/config/etc/chrony.conf /etc/chrony.conf
 
@@ -96,9 +119,18 @@ firewall-cmd --add-service=http --zone=public --permanent
 firewall-cmd --reload
 firewall-cmd --list-all
 
+# apacheグループにvagrantユーザーを追加
 usermod -aG apache vagrant
 
+# プロジェクトルートディレクトリを作成
+mkdir -p /var/www/html/laravel
+chown apache:apache -R /var/www/html
+chmod g+ws -R /var/www/html
+ln -s /var/www/html/laravel /home/vagrant/laravel
+
 cat << EOS >> /home/vagrant/.bashrc
+
+umask 002
 
 # ls ファイル一覧表示、容量サイズ表示
 alias ll='ls -lh --time-style=long-iso'

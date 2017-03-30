@@ -1,0 +1,19 @@
+{
+    "folders":
+    [
+        {
+            "path": "."
+        }
+    ],
+    "settings":
+    {
+        "xdebug":
+        {
+            "close_on_stop": true,
+            "super_globals": true,
+            "debug": true,
+            "break_on_start": true,
+            "url": "http://blog.dev/"
+        }
+    }
+}
