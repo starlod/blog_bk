@@ -3,14 +3,20 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
 // Variables
-@import "variables";
-@import "utilities_spacing";
+// @import "variables";
+// @import "utilities_spacing";
 
 // Bootstrap
 @import "node_modules/font-awesome/scss/font-awesome";
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootstrap/scss/bootstrap";
 
 @import "common";
 @import "header";
 @import "footer";
 @import "top";
+
+.page-header {
+    padding: 20px 0;
+    margin-bottom: 20px;
+    background-color: #4dd;
+}
