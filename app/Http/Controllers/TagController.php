@@ -19,7 +19,7 @@ class TagController extends Controller
     {
         $tags = Tag::ordered()->get();
         if ($tags->count() === 0) {
-            $this->info('messages.no_tags');
+            message('messages.no_tags');
         }
 
         return View::make('tags.index')->with(compact('tags'));
@@ -51,7 +51,7 @@ class TagController extends Controller
         $tag = new Tag($request->all());
         $tag->author_id = Auth::user()->id;
         $tag->save();
-        $this->success('messages.created', ['name' => 'タグ']);
+        message('messages.created', ['name' => 'タグ'], 'success');
 
         return redirect("/tags/$tag->id");
     }
@@ -69,7 +69,7 @@ class TagController extends Controller
             return View::make('blog.top')->with(compact('tag', 'posts'));
         }
 
-        $this->warning('messages.not_found', ['name' => 'タグ']);
+        message('messages.not_found', ['name' => 'タグ'], 'warning');
         return redirect('/');
     }
 
@@ -86,7 +86,7 @@ class TagController extends Controller
             return View::make('tags.edit')->with(compact('tag', 'tags'));
         }
 
-        $this->warning('messages.not_found', ['name' => 'タグ']);
+        message('messages.not_found', ['name' => 'タグ'], 'warning');
         return redirect('/tags/');
     }
 
@@ -101,7 +101,7 @@ class TagController extends Controller
     {
         $tag = Tag::find($id);
         $tag = $tag->update($request->all());
-        $this->success('messages.updated', ['name' => 'タグ']);
+        message('messages.updated', ['name' => 'タグ'], 'success');
 
         return redirect("/tags/$id/edit");
     }
@@ -117,7 +117,7 @@ class TagController extends Controller
         $tag = Tag::find($id);
         $tag->delete();
 
-        $this->success('messages.deleted', ['name' => 'タグ']);
+        message('messages.deleted', ['name' => 'タグ'], 'success');
 
         return redirect('/tags');
     }

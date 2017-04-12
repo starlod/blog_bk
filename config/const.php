@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'alerts' => [
+        // アラートクラス => ログレベル
+        'info'    => 'info',
+        'success' => 'info',
+        'warning' => 'warning',
+        'danger'  => 'warning',
+    ],
     'roles' => [
         0 => 'ROLE_DEVELOPER',
         1 => 'ROLE_ADMINISTRATOR',

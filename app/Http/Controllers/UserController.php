@@ -33,7 +33,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $user = $user->update($request->all());
-        $this->success('messages.updated', ['name' => 'プロフィール']);
+        message('messages.updated', ['name' => 'プロフィール'], 'success');
 
         return redirect("/profile");
     }
@@ -64,7 +64,7 @@ class UserController extends Controller
         }
 
         $user = $user->update($request->all());
-        $this->success('messages.updated', ['name' => 'プロフィール']);
+        message('messages.updated', ['name' => 'プロフィール'], 'success');
 
         return redirect("/profile");
     }

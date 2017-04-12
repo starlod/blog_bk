@@ -52,7 +52,7 @@ class PostController extends Controller
             $post = new Post($request->all());
             $post->author_id = Auth::user()->id;
             $post->save();
-            $this->success('messages.created', ['name' => '記事']);
+            message('messages.created', ['name' => '記事'], 'success');
 
             return redirect("/posts/$post->id");
         }
@@ -72,7 +72,7 @@ class PostController extends Controller
         // if ($post = Post::find($id)) {
         // }
 
-        // $this->warning('messages.not_found', ['name' => '記事']);
+        // message('messages.not_found', ['name' => '記事'], 'warning');
         // return redirect('/posts');
     }
 
@@ -88,7 +88,7 @@ class PostController extends Controller
             return View::make('posts.edit')->with(compact('post'));
         }
 
-        $this->warning('messages.not_found', ['name' => '記事']);
+        message('messages.not_found', ['name' => '記事'], 'warning');
         return redirect('/posts');
     }
 
@@ -103,7 +103,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post = $post->update($request->all());
-        $this->success('messages.updated', ['name' => '記事']);
+        message('messages.updated', ['name' => '記事'], 'success');
 
         return redirect("/posts/$id");
     }
@@ -119,7 +119,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
 
-        $this->success('messages.deleted', ['name' => '記事']);
+        message('messages.deleted', ['name' => '記事'], 'success');
 
         return redirect('/posts');
     }

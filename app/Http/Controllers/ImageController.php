@@ -60,7 +60,7 @@ class ImageController extends Controller
         $link->name = 'テスト画像';
         $link->image = $path;
         $link->save();
-        $this->success('messages.created', ['name' => 'イメージ']);
+        message('messages.created', ['name' => 'イメージ'], 'success');
 
         return redirect("/images");
     }
@@ -78,7 +78,7 @@ class ImageController extends Controller
             return View::make('blog.top')->with(compact('image', 'posts'));
         }
 
-        $this->warning('messages.not_found', ['name' => 'イメージ']);
+        message('messages.not_found', ['name' => 'イメージ'], 'warning');
         return redirect('/');
     }
 
@@ -95,7 +95,7 @@ class ImageController extends Controller
             return View::make('images.edit')->with(compact('image', 'images'));
         }
 
-        $this->warning('messages.not_found', ['name' => 'イメージ']);
+        message('messages.not_found', ['name' => 'イメージ'], 'warning');
         return redirect('/images/');
     }
 
@@ -110,7 +110,7 @@ class ImageController extends Controller
     {
         $image = Image::find($id);
         $image = $image->update($request->all());
-        $this->success('messages.updated', ['name' => 'イメージ']);
+        message('messages.updated', ['name' => 'イメージ'], 'success');
 
         return redirect("/images/$id/edit");
     }
@@ -126,7 +126,7 @@ class ImageController extends Controller
         $image = Image::find($id);
         $image->delete();
 
-        $this->success('messages.deleted', ['name' => 'イメージ']);
+        message('messages.deleted', ['name' => 'イメージ'], 'success');
 
         return redirect('/images');
     }

@@ -19,7 +19,7 @@ class CategoryController extends Controller
     {
         $categories = Category::ordered()->get();
         if ($categories->count() === 0) {
-            $this->info('messages.no_categories');
+            message('messages.no_categories');
         }
 
         return View::make('categories.index')->with(compact('categories'));
@@ -51,7 +51,7 @@ class CategoryController extends Controller
         $category = new Category($request->all());
         $category->author_id = Auth::user()->id;
         $category->save();
-        $this->success('messages.created', ['name' => 'カテゴリー']);
+        message('messages.created', ['name' => 'カテゴリー'], 'success');
 
         return redirect("/categories/$category->id");
     }
@@ -69,7 +69,7 @@ class CategoryController extends Controller
             return View::make('blog.top')->with(compact('category', 'posts'));
         }
 
-        $this->warning('messages.not_found', ['name' => 'カテゴリー']);
+        message('messages.not_found', ['name' => 'カテゴリー'], 'warning');
         return redirect('/');
     }
 
@@ -86,7 +86,7 @@ class CategoryController extends Controller
             return View::make('categories.edit')->with(compact('category', 'categories'));
         }
 
-        $this->warning('messages.not_found', ['name' => 'カテゴリー']);
+        message('messages.not_found', ['name' => 'カテゴリー'], 'warning');
         return redirect('/categories/');
     }
 
@@ -101,7 +101,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category = $category->update($request->all());
-        $this->success('messages.updated', ['name' => 'カテゴリー']);
+        message('messages.updated', ['name' => 'カテゴリー'], 'success');
 
         return redirect("/categories/$id/edit");
     }
@@ -117,7 +117,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
 
-        $this->success('messages.deleted', ['name' => 'カテゴリー']);
+        message('messages.deleted', ['name' => 'カテゴリー'], 'success');
 
         return redirect('/categories');
     }

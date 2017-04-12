@@ -17,7 +17,7 @@ class BlogController extends Controller
     {
         $posts = Post::orderby('updated_at', 'desc')->paginate(20);
         if ($posts->count() === 0) {
-            $this->info('messages.no_posts');
+            message('messages.no_posts');
         }
 
         return View::make('blog.top')->with(compact('posts'));

@@ -416,3 +416,62 @@ function array_to_text($array)
 {
     return implode("\r\n", $array);
 }
+
+/**
+ * ファイルサイズの単位変換
+ *
+ * @param int $byte
+ * @return string
+ */
+function file_size($byte)
+{
+    if ($byte < 1024) {
+        return $byte . ' B';
+    } else if ($byte < 1048576) {
+        return number_format($byte / 1024, 2) . ' KB';
+    } else if ($byte < 1073741824) {
+        return number_format($byte / 1048576, 2) . ' MB';
+    } else if ($byte < 1099511627776) {
+        return number_format($byte / 1073741824, 2) . ' GB';
+    } else {
+        return number_format($byte / 1099511627776, 2) . ' TB';
+    }
+}
+
+/**
+ * ログ
+ *
+ */
+function logging($message, $level = 'debug')
+{
+    $user = auth()->user();
+    $user_id = $user ? $user->id : '';
+    $user_name = $user ? $user->name : 'guest';
+    $uri = (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+    $user_agent = $_SERVER["HTTP_USER_AGENT"];
+    $referer = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : '';
+    \Log::$level($message, compact('user_id', 'user_name', 'uri', 'user_agent', 'referer'));
+}
+
+/**
+ * フラッシュメッセージを表示
+ *
+ * @param string $message フラッシュメッセージに表示する内容
+ * @param string $alert ログレベル、Bootstrapのアラートクラス名（alert-***）
+    * info
+    * success
+    * warning
+    * danger
+ * @param string $attributes $messageのプレースホルダーを置き換え
+ * @param boolean $overwrite フラッシュメッセージを上書きするか
+ */
+function message($message, $alert = 'info', $attributes = [], $overwrite = false)
+{
+    $trans = trans($message, $attributes);
+    $level = config("const.alerts.$alert");
+    logging($message, $level);
+    if ($overwrite) {
+        \Session::forget('messages.' . $alert);
+    }
+    \Session::push('messages.' . $alert, $trans);
+}
