@@ -17,14 +17,9 @@ class PostController extends Controller
      *
      * @return View
      */
-    public function index(Request $request)
+    public function index()
     {
-        $posts = Post::orderby('updated_at', 'desc')->paginate(20);
-        if ($posts->count() === 0) {
-            $this->info('messages.no_posts');
-        }
-
-        return View::make('posts.index')->with(compact('posts'));
+        return View::make('posts.index');
     }
 
     /**
