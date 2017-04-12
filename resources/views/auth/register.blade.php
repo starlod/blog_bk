@@ -1,7 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="page-header">
+    <div class="container">
+        <h1>{{ trans('messages.title.register') }}</h1>
+    </div>
+</div>
+
 <div class="container">
+    {{ Form::open(['url' => ["/login"], 'method' => 'POST', 'class' => 'form-horizontal']) }}
+
+    @include('components._form_row', [
+        'title' => trans('messages.users.name'),
+        'content' => '<input id="name" type="text" class="form-control" name="name" value="' . old('email') . '" required autofocus>',
+        'content' => '<input type="email" class="form-control" id="email" name="email" placeholder="メールアドレス" value="' . old('email') . '" required autofocus>',
+    ])
+
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -14,7 +29,7 @@
                             <label for="name" class="col-md-4 control-label">{{ trans('messages.users.name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">

@@ -1,37 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="page-header">
+    <div class="container">
+        <h1>プロフィールの編集</h1>
+    </div>
+</div>
+
 <div id="profile" class="container">
-    <h2>プロフィールの編集</h2>
     {{ Form::open(['url' => ["/profile"], 'method' => 'PUT', 'class' => 'form-horizontal']) }}
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <fieldset class="form-group">
-                    <label for="name" class="col-sm-2 control-label text-right">{{ trans('messages.users.name') }}</label>
-                    <div class="col-sm-10">
-                        {{ Form::text('name', $user->name, ['class' => 'form-control', 'required' => 'required', 'maxlength' => '255']) }}
-                    </div>
-                </fieldset>
-                <fieldset class="form-group">
-                    <label for="name" class="col-sm-2 control-label text-right">{{ trans('messages.roles.name') }}</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">
-                            {{ trans('messages.roles.names.' . $user->role->name) }}
-                        </p>
-                    </div>
-                </fieldset>
-                <fieldset class="form-group">
-                    <label for="email" class="col-sm-2 control-label text-right">{{ trans('messages.users.email') }}</label>
-                    <div class="col-sm-10">
-                        {{ Form::text('email', $user->email, ['class' => 'form-control', 'required' => 'required', 'maxlength' => '255']) }}
-                    </div>
-                </fieldset>
-            </div>
-            <div class="panel-footer">
-                {{ link_to("/", trans('messages.buttons.home'), ['class' => 'btn btn-default']) }}
-                {{ Form::submit(trans('messages.buttons.update'), ['class' => 'btn btn-warning']) }}
-            </div>
+
+        @include('components._form_row', [
+            'title' => trans('messages.users.name'),
+            'content' => Form::text('name', $user->name, ['class' => 'form-control', 'required' => 'required', 'maxlength' => '255']),
+        ])
+
+        @include('components._form_row_word', [
+            'title' => trans('messages.roles.name'),
+            'content' => trans('messages.roles.names.' . $user->role->name),
+        ])
+
+        @include('components._form_row', [
+            'title' => trans('messages.users.email'),
+            'content' => Form::text('email', $user->email, ['class' => 'form-control', 'required' => 'required', 'maxlength' => '255']),
+        ])
+
+        <div class="actions">
+            {{ link_to("/", trans('messages.buttons.home'), ['class' => 'btn btn-secondary']) }}
+            {{ Form::submit(trans('messages.buttons.update'), ['class' => 'btn btn-primary', 'role' => 'button']) }}
         </div>
+
     {{ Form::close() }}
 </div>
 @endsection

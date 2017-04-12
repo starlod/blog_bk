@@ -1,3 +1,4 @@
+<!-- きさま！見ているなッ! -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -22,7 +23,7 @@
 </div>
 
 @yield('pre_javascripts')
-<script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
+<script id="script" type="text/javascript" src="{{ mix('js/app.js') }}"></script>
 @yield('post_javascripts')
 </body>
 </html>
