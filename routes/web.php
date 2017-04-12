@@ -17,7 +17,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/', 'BlogController@top');
 
-Route::resource('posts', 'PostController');
+Route::resource('posts', 'Admin\PostController');
 Route::resource('posts/{id}/comments', 'CommentController');
 Route::get('/profile', 'UserController@profile');
 Route::put('/profile', 'UserController@profileUpdate');
