@@ -1,6 +1,17 @@
 <?php
 
 /**
+ *
+ */
+function active($slug, $type = 'nav')
+{
+    if ($type === 'nav') {
+        return Request::url() === url($slug) ? 'active' : '';
+    }
+    return '';
+}
+
+/**
  * X秒前、X分前、X時間前、X日前などといった表示に変換する。
  * 一分未満は秒、一時間未満は分、一日未満は時間、
  * 31日以内はX日前、それ以上はX月X日と返す。

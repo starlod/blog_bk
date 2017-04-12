@@ -1,7 +1,8 @@
 <template>
+
     <div id="posts">
-        <table class="table table-striped table-hover">
-            <thead>
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="thead-inverse">
                 <tr>
                     <th>ID</th>
                     <th>タイトル</th>
@@ -13,7 +14,7 @@
             <tbody>
                 <tr v-for="item in items">
                     <td>{{ item.id }}</td>
-                    <td>{{ item.title }}</td>
+                    <td><a :href="url(item.id)">{{ item.title }}</a></td>
                     <td>{{ item.content }}</td>
                     <td>{{ item.author.name }}</td>
                     <td>{{ item.updated_at }}</td>
@@ -38,6 +39,9 @@
         mounted() {
         },
         methods: {
+            url(id) {
+                return APP_URL + '/posts/' + id;
+            }
         }
     }
 </script>

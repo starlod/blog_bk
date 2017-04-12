@@ -15,13 +15,19 @@ require('./filter');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+window.VueMarkdown = require('vue-markdown');
+Vue.use(VueMarkdown);
+
+// Vue.component('example', require('./components/Example.vue'));
+// Vue.component('vue-markdown', VueMarkdown);
 Vue.component('posts', require('./components/posts.vue'));
+Vue.component('post', require('./components/post.vue'));
 Vue.component('pagination', require('./components/pagination.vue'));
 Vue.component('image_uploader', require('./components/image_uploader.vue'));
 Vue.component('images', require('./components/images.vue'));
 Vue.component('items', require('./components/items.vue'));
 Vue.component('gallery', require('./components/gallery.vue'));
+Vue.component('lightbox', require('./components/lightbox.vue'));
 
 Vue.config.devtools = true;
 

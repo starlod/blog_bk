@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                 <h1 class="page-header">Thumbnail Gallery</h1>
             </div>
-            <div class="col-lg-3 col-md-4 col-xs-6" v-for="item in items" v-if="items.length > 0">
+            <div class="gallery col-lg-3 col-md-4 col-xs-6" v-for="item in items" v-if="items.length > 0">
                 <a class="thumbnail" href="#">
                     <img :src="item.url" :alt="item.name">
                 </a>
@@ -15,6 +15,10 @@
         </div>
    </div>
 </template>
+
+<style lang="scss">
+
+</style>
 
 <script>
     export default {

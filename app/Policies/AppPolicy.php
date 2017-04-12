@@ -26,7 +26,7 @@ class AppPolicy
         }
     }
 
-    public function can_admin($user)
+    public function canAdmin($user)
     {
         if ($user->isAdmin()) {
             return true;
@@ -34,33 +34,33 @@ class AppPolicy
         return false;
     }
 
-    public function can_editor($user)
+    public function canEditor($user)
     {
-        if ($this->can_admin($user) || $user->isEditor()) {
+        if ($this->canAdmin($user) || $user->isEditor()) {
             return true;
         }
         return false;
     }
 
-    public function can_author($user)
+    public function canAuthor($user)
     {
-        if ($this->can_editor($user) || $user->isAuthor()) {
+        if ($this->canEditor($user) || $user->isAuthor()) {
             return true;
         }
         return false;
     }
 
-    public function can_contributor($user)
+    public function canContributor($user)
     {
-        if ($this->can_author($user) || $user->isContributor()) {
+        if ($this->canAuthor($user) || $user->isContributor()) {
             return true;
         }
         return false;
     }
 
-    public function can_subscriber($user)
+    public function canSubscriber($user)
     {
-        if ($this->can_contributor($user) || $user->isSubscriber()) {
+        if ($this->canContributor($user) || $user->isSubscriber()) {
             return true;
         }
         return false;

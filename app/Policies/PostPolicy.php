@@ -6,7 +6,7 @@ use App\User;
 use App\Post;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PostPolicy
+class PostPolicy extends AppPolicy
 {
     use HandlesAuthorization;
 
@@ -19,7 +19,7 @@ class PostPolicy
      */
     public function view(User $user, Post $post)
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,10 +28,9 @@ class PostPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create()
     {
-        dump('bbb');
-        return false;
+        return true;
     }
 
     /**

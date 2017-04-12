@@ -1,5 +1,5 @@
 <template>
-    <div id="image_uploader" class="well m-b-0">
+    <div id="image_uploader">
         <div id="drop-box" class="drop-box"
              :class="{ dragging: isDragging }"
              @dragleave="onDragLeave"
@@ -10,13 +10,13 @@
                 <p>ここにファイルをドロップ</p>
                 <p>または</p>
                 <p>
-                    <input type="button" value="ファイルを選択" class="btn btn-default" @click="onFileSelect">
+                    <input type="button" value="ファイルを選択" class="btn btn-primary" @click="onFileSelect">
                 </p>
             </div>
-            <input type="file" class="hidden" id="files" name="files" multiple @change="onChangeFiles">
+            <input type="file" class="invisible" id="files" name="files" multiple @change="onChangeFiles">
         </div>
         <p class="form-control-static">最大アップロードサイズ: 20MB</p>
-        <ul v-if="items.length > 0">
+        <ul class="m-b-0" v-if="items.length > 0">
             <li v-for="(item, index) in items">
                 <b>{{ item.name }}</b> {{ item.size|number_format }} bytes.
             </li>
@@ -30,6 +30,7 @@
 <style lang="scss">
 
 .drop-box {
+    margin-top: 15px;
     background-color: #f5f5f5;
     border: 4px dashed #b4b9be;
     border-radius: 10px;

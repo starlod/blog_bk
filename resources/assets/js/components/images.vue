@@ -13,14 +13,21 @@
             <tbody>
                 <tr v-for="item in items">
                     <td>{{ item.id }}</td>
-                    <td><a :href="item.url" target="_blank"><img :src="item.url" :alt="item.name" width="75" height="75"></a></td>
+                    <td><img @click="showModal = true" :src="item.url" :alt="item.name" width="75" height="75"></td>
                     <td>{{ item.name }}</td>
-                    <td><button class="btn btn-danger" @click="destroy(item.id)">削除</button></td>
+                    <td>
+                        <button class="btn btn-danger">削除</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
 
         <p v-else>画像がありません。</p>
+
+        <lightbox v-if="showModal" @close="showModal = false">
+            <h3 slot="header">custom header</h3>
+        </lightbox>
+
     </div>
 </template>
 
@@ -34,7 +41,7 @@
         },
         data() {
             return {
-
+                showModal: false
             }
         },
         mounted() {
