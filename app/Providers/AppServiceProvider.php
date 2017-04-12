@@ -5,9 +5,6 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Dusk\DuskServiceProvider;
 
-use Faker\Generator as FakerGenerator;
-use Faker\Factory as FakerFactory;
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -27,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->register(LogServiceProvider::class);
+
         if ($this->app->environment('local', 'testing')) {
             $this->app->register(DuskServiceProvider::class);
         }
