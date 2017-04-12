@@ -1,40 +1,84 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# README
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## 準備
 
-## About Laravel
+```
+$ VBoxManage -v
+5.1.16r113841
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+$ vagrant -v
+Vagrant 1.9.2
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+$ vagrant plugin list
+vagrant-hostsupdater (1.0.2)
+  - Version Constraint: > 0
+vagrant-share (1.1.7)
+  - Version Constraint: > 0
+vagrant-vbguest (0.13.0)
+  - Version Constraint: > 0
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+* 足りないものはインストールしてください。
+$ vagrant plugin install vagrant-hostsupdater
+$ vagrant plugin install vagrant-share
+$ vagrant plugin install vagrant-vbguest
+```
 
-## Learning Laravel
+### /etc/hosts ファイルに書き込み権限を付与
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+```
+$ sudo chmod 777 /etc/hosts
+```
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+- `vagrant-hostsupdater` が起動時、終了時に書き込むため権限を付与します。
 
-## Contributing
+## 初回起動時
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+```
+$ git clone https://github.com/starlod/blog
+$ cd blog
+$ vagrant up --no-provision
+$ vagrant provision --provision-with bootstrap
+$ open http://blog.dev
+```
 
-## Security Vulnerabilities
+## 2回目以降
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+```
+$ vagrant up
+$ open http://blog.dev
+```
 
-## License
+## コマンド
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+```
+* SSH接続
+$ vagrant ssh
+
+* 開発ビルド
+$ yarn run dev
+* 開発ビルド（監視モード）
+$ yarn run watch
+* 本番ビルド（圧縮）
+$ yarn run production
+```
+
+## パッケージ、データベースの更新
+
+```
+$ vagrant provision --provision-with update
+```
+
+または
+
+```
+$ vagrant ssh
+$ cd laravel
+$ composer install
+$ yarn install
+$ php artisan migrate
+$ php artisan db:seed
+$ yarn run dev
+```
+
+## 環境
+
