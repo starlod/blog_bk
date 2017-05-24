@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
@@ -10,7 +10,7 @@ use View;
 use Auth;
 use DB;
 
-class PostController extends Controller
+class PostsController extends Controller
 {
     /**
      * 記事 一覧
@@ -19,7 +19,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return View::make('posts.index');
+        $posts = Post::all();
+
+        return View::make('posts.index', compact('posts'));
     }
 
     /**
@@ -68,12 +70,12 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return View::make('posts.show')->with(compact('id'));
-        // if ($post = Post::find($id)) {
-        // }
+        if ($post = Post::find($id)) {
+            return View::make('posts.show')->with(compact('post'));
+        }
 
-        // message('messages.not_found', ['name' => '記事'], 'warning');
-        // return redirect('/posts');
+        message('messages.not_found', ['name' => '記事'], 'warning');
+        return redirect('/posts');
     }
 
     /**

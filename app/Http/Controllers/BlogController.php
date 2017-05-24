@@ -22,4 +22,19 @@ class BlogController extends Controller
 
         return View::make('blog.top')->with(compact('posts'));
     }
+
+    /**
+     * 記事 詳細
+     *
+     * @return View
+     */
+    public function show($id)
+    {
+        if ($post = Post::find($id)) {
+            return View::make('blog.show')->with(compact('post'));
+        }
+
+        // message('messages.no_posts');
+        return redirect()->route('home');
+    }
 }

@@ -16,9 +16,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/', 'BlogController@top');
+Route::get('/{id}.html', 'BlogController@show')->name('blog.show');
 
-Route::resource('posts', 'Admin\PostController');
-Route::resource('posts/{id}/comments', 'CommentController');
+Route::resource('admin/posts', 'Admin\PostsController');
+Route::resource('admin/posts/{id}/comments', 'CommentController');
 Route::get('/profile', 'UserController@profile');
 Route::put('/profile', 'UserController@profileUpdate');
 Route::get('/change_password', 'UserController@changePassword');
