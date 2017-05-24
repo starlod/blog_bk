@@ -1,6 +1,5 @@
 Vagrant.configure("2") do |config|
-#   config.vm.box = "blog"
-  config.vm.box = "centos/7"
+  config.vm.box = "starlod/blog"
   config.vm.hostname = "blog.dev"
 
   # ネットワーク設定
@@ -10,6 +9,8 @@ Vagrant.configure("2") do |config|
 
   # 共有フォルダ
   config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  # 共有フォルダ(インストール時はapacheユーザーがいないので無効化する)
   config.vm.synced_folder ".", "/var/www/html/laravel", create: true, owner: 'apache', group: 'apache', mount_options: ['dmode=777', 'fmode=775'], nfs: false
 
   # プロビジョン
