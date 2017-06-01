@@ -16,6 +16,7 @@ class BlogController extends Controller
     public function top(Request $request)
     {
         $posts = Post::orderby('updated_at', 'desc')->paginate(20);
+
         if ($posts->count() === 0) {
             message('messages.no_posts');
         }

@@ -16,7 +16,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/', 'BlogController@top');
-Route::get('/{id}.html', 'BlogController@show')->name('blog.show');
+Route::get('/posts/{id}', 'BlogController@show')->name('blog.show');
 
 Route::resource('admin/posts', 'Admin\PostsController');
 Route::resource('admin/posts/{id}/comments', 'CommentController');

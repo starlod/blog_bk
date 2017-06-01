@@ -2,6 +2,10 @@
 
 @section('content')
 <div class="container">
-    <items url="/posts"></items>
+    <ul>
+        @foreach ($posts as $post)
+            <li>{{ link_to_route('blog.show', $post->title, $post->id) }}</li>
+        @endforeach
+    </ul>
 </div>
 @endsection
