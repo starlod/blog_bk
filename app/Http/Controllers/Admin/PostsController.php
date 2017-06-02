@@ -21,7 +21,7 @@ class PostsController extends Controller
     {
         $posts = Post::all();
 
-        return View::make('posts.index', compact('posts'));
+        return View::make('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -32,14 +32,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        if (Auth::check() && Auth::user()->can('create', Post::class)) {
-            $post = new Post;
-            $users = User::all()->pluck('name', 'id');
-
-            return View::make('posts.new')->with(compact('post', 'users'));
-        }
-
-        return redirect("/");
+        $post = new Post;
+        return View::make('admin.posts.new')->with(compact('post'));
     }
 
     /**
@@ -50,16 +44,12 @@ class PostsController extends Controller
      */
     public function store(PostRequest $request)
     {
-        if (Auth::check() && Auth::user()->can('create', Post::class)) {
-            $post = new Post($request->all());
-            $post->author_id = Auth::user()->id;
-            $post->save();
-            message('messages.created', ['name' => '記事'], 'success');
+        $post = new Post($request->all());
+        $post->author_id = Auth::user()->id;
+        $post->save();
+        message('messages.created', 'success', ['name' => '記事']);
 
-            return redirect("/posts/$post->id");
-        }
-
-        return redirect("/");
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -70,12 +60,13 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        return View::make('posts.show')->with(compact('id'));
-        // if ($post = Post::find($id)) {
-        // }
+        if ($post = Post::find($id)) {
+            return View::make('admin.posts.show')->with(compact('post'));
+        }
 
-        // message('messages.not_found', ['name' => '記事'], 'warning');
-        // return redirect('/posts');
+        message('messages.not_found', 'warning', ['name' => '記事']);
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -87,11 +78,12 @@ class PostsController extends Controller
     public function edit($id)
     {
         if ($post = Post::find($id)) {
-            return View::make('posts.edit')->with(compact('post'));
+            return View::make('admin.posts.edit')->with(compact('post'));
         }
 
-        message('messages.not_found', ['name' => '記事'], 'warning');
-        return redirect('/posts');
+        message('messages.not_found', 'warning', ['name' => '記事']);
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -104,10 +96,11 @@ class PostsController extends Controller
     public function update(PostRequest $request, $id)
     {
         $post = Post::find($id);
-        $post = $post->update($request->all());
-        message('messages.updated', ['name' => '記事'], 'success');
+        $post->update($request->all());
 
-        return redirect("/posts/$id");
+        message('messages.updated', 'success', ['name' => '記事']);
+
+        return redirect()->route('admin.posts.show', $id);
     }
 
     /**
@@ -121,8 +114,8 @@ class PostsController extends Controller
         $post = Post::find($id);
         $post->delete();
 
-        message('messages.deleted', ['name' => '記事'], 'success');
+        message('messages.deleted', 'success', ['name' => '記事']);
 
-        return redirect('/posts');
+        return redirect()->route('admin.posts.index');
     }
 }

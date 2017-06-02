@@ -26,7 +26,7 @@
                 @foreach ($posts as $post)
                     <tr>
                         <td>{{ $post->id }}</td>
-                        <td><a href="{{ route('posts.index', $post->id) }}">{{ $post->title }}</a></td>
+                        <td>{{ link_to_route('admin.posts.show', $post->title, $post->id) }}</td>
                         <td>{{ $post->content }}</td>
                         <td>{{ $post->author->name }}</td>
                         <td>{{ $post->updated_at }}</td>

@@ -18,8 +18,16 @@ Route::get('/home', 'HomeController@index');
 Route::get('/', 'BlogController@top');
 Route::get('/posts/{id}', 'BlogController@show')->name('blog.show');
 
-Route::resource('admin/posts', 'Admin\PostsController');
-Route::resource('admin/posts/{id}/comments', 'CommentController');
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('posts', 'Admin\PostsController@index')->name('admin.posts.index');
+    Route::post('posts', 'Admin\PostsController@store')->name('admin.posts.store');
+    Route::get('posts/create', 'Admin\PostsController@create')->name('admin.posts.create');
+    Route::get('posts/{id}', 'Admin\PostsController@show')->name('admin.posts.show');
+    Route::put('posts/{id}', 'Admin\PostsController@update')->name('admin.posts.update');
+    Route::delete('posts', 'Admin\PostsController@destroy')->name('admin.posts.destroy');
+    Route::get('posts/{id}/edit', 'Admin\PostsController@edit')->name('admin.posts.edit');
+});
+
 Route::get('/profile', 'UserController@profile');
 Route::put('/profile', 'UserController@profileUpdate');
 Route::get('/change_password', 'UserController@changePassword');
