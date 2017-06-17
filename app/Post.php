@@ -25,6 +25,10 @@ class Post extends AppModel
         'updater_id',       // 更新者ID
     ];
 
+    protected $dates = [
+        'published_at',     // 公開日時
+    ];
+
     public function author()
     {
         return $this->belongsTo(User::class);
