@@ -33,7 +33,7 @@ class PostsController extends Controller
     public function create()
     {
         $post = new Post;
-        return View::make('admin.posts.new')->with(compact('post'));
+        return View::make('admin.posts.create')->with(compact('post'));
     }
 
     /**

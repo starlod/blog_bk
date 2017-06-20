@@ -29,13 +29,8 @@ class BlogController extends Controller
      *
      * @return View
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        if ($post = Post::find($id)) {
-            return View::make('blog.show')->with(compact('post'));
-        }
-
-        // message('messages.no_posts');
-        return redirect()->route('home');
+        return View::make('admin.posts.show')->with(compact('post'));
     }
 }

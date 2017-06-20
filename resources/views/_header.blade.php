@@ -7,9 +7,11 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item {{ active('/posts') }}">
-                <a class="nav-link" href="{{ url('/posts') }}"><i class="fa fa-list" aria-hidden="true"></i> {{ trans('messages.menu.posts_index') }}</a>
-            </li>
+            @if (auth()->user())
+                <li class="nav-item {{ active('/posts') }}">
+                    <a class="nav-link" href="{{ route('admin.posts.index') }}"><i class="fa fa-list" aria-hidden="true"></i> {{ trans('messages.menu.posts_index') }}</a>
+                </li>
+            @endif
             <li class="nav-item {{ active('/gallery') }}">
                 <a class="nav-link" href="{{ url('/gallery') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> {{ trans('messages.menu.gallery') }}</a>
             </li>

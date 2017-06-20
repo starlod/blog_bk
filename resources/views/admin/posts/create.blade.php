@@ -7,7 +7,7 @@
     {{ Form::open(['route' => 'admin.posts.store', 'method' => 'POST', 'class' => 'form-horizontal']) }}
         @include('admin.posts._form')
 
-        {{ link_to("/posts", trans('messages.buttons.back'), ['class' => 'btn btn-default']) }}
+        {{ link_to_route('admin.posts.index', trans('messages.buttons.back'), [], ['class' => 'btn btn-secondary', 'role' => 'button']) }}
         {{ Form::submit(trans('messages.buttons.save'), ['class' => 'btn btn-success']) }}
     {{ Form::close() }}
 </div>

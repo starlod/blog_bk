@@ -2,12 +2,42 @@
 
 @section('content')
 
-<div id="post" class="container">
-    <h1 class="title">{{ $post->title }}</h1>
+<div class="container markdown-body">
+    <h1>{{ $post->title }}</h1>
 
-    <div>{!! Markdown::convertToHtml($post->content) !!}</div>
+    <span>
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+        {{ $post->published_at->format('Y.m.d') }}
+    </span>
+    <span>
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+        {{ $post->updated_at->format('Y.m.d') }}
+    </span>
+    <span>
+        <i class="fa fa-user" aria-hidden="true"></i>
+        {{ $post->author->name() }}
+    </span>
 
-    {{ link_to_route('admin.posts.edit', trans('messages.buttons.edit'), $post->id, ['class' => 'btn btn-secondary', 'role' => 'button']) }}
+    <span>
+        <i class="fa fa-folder-open" aria-hidden="true"></i>
+        {{ $post->category->name }}
+    </span>
+    <span>
+        <i class="fa fa-tags" aria-hidden="true"></i>
+        @foreach($post->tags as $tag)
+            {{ $tag->name }}
+        @endforeach
+    </span>
+
+    @if (auth()->user())
+        <span>
+            {{ link_to_route('admin.posts.edit', __('messages.buttons.edit'), $post->id, ['class' => 'btn btn-secondary', 'role' => 'button']) }}
+        </span>
+    @endif
+
+    <div>
+        {!! Markdown::convertToHtml($post->content) !!}
+    </div>
 </div>
 
 @endsection

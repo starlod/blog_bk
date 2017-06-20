@@ -27,7 +27,6 @@ class PostsController extends Controller
     /**
      * 記事 新規
      *
-     * @param Integer $id
      * @return View
      */
     public function create()
@@ -36,10 +35,10 @@ class PostsController extends Controller
             $post = new Post;
             $users = User::all()->pluck('name', 'id');
 
-            return View::make('posts.new')->with(compact('post', 'users'));
+            return View::make('admin.posts.create')->with(compact('post', 'users'));
         }
 
-        return redirect("/");
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -56,73 +55,61 @@ class PostsController extends Controller
             $post->save();
             message('messages.created', ['name' => '記事'], 'success');
 
-            return redirect("/posts/$post->id");
+            return redirect()->route('admin.posts.show', $post->id);
         }
 
-        return redirect("/");
+        return redirect()->route('admin.posts.index');
     }
 
     /**
      * 記事 詳細
      *
-     * @param Integer $id
+     * @param App\Post $post
      * @return View
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        if ($post = Post::find($id)) {
-            return View::make('posts.show')->with(compact('post'));
-        }
-
-        message('messages.not_found', ['name' => '記事'], 'warning');
-        return redirect('/posts');
+        return View::make('posts.show')->with(compact('post'));
     }
 
     /**
      * 記事 編集
      *
-     * @param Integer $id
+     * @param App\Post $post
      * @return View
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        if ($post = Post::find($id)) {
-            return View::make('posts.edit')->with(compact('post'));
-        }
-
-        message('messages.not_found', ['name' => '記事'], 'warning');
-        return redirect('/posts');
+        return View::make('posts.edit')->with(compact('post'));
     }
 
     /**
      * 記事 更新
      *
-     * @param postRequest $request
-     * @param Integer $id
+     * @param PostRequest $request
+     * @param App\Post $post
      * @return Redirect to post index
      */
-    public function update(PostRequest $request, $id)
+    public function update(PostRequest $request, Post $post)
     {
-        $post = Post::find($id);
-        $post = $post->update($request->all());
+        $post->update($request->all());
         message('messages.updated', ['name' => '記事'], 'success');
 
-        return redirect("/posts/$id");
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**
      * 記事 削除
      *
-     * @param Integer $id
-     * @return Redirect to post index
+     * @param App\Post $post
+     * @return Redirect to posts.index
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post = Post::find($id);
         $post->delete();
 
         message('messages.deleted', ['name' => '記事'], 'success');
 
-        return redirect('/posts');
+        return redirect()->route('posts.index');
     }
 }

@@ -8,7 +8,7 @@
         {{ Form::hidden('_method', 'PUT') }}
         @include('admin.posts._form')
 
-        {{ link_to("/posts", trans('messages.buttons.back'), ['class' => 'btn btn-secondary', 'role' => 'button']) }}
+        {{ link_to_route('admin.posts.index', trans('messages.buttons.back'), [], ['class' => 'btn btn-secondary', 'role' => 'button']) }}
         {{ Form::submit(trans('messages.buttons.save'), ['class' => 'btn btn-success', 'role' => 'button']) }}
     {{ Form::close() }}
 </div>
