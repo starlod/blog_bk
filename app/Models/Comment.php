@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use cebe\markdown\MarkdownExtra as Markdown;
+use App\Models\Comment;
+use App\Observers\CommentObserver;
 
 class Comment extends AppModel
 {
@@ -27,6 +29,13 @@ class Comment extends AppModel
         'type',             // コメント種別
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        Comment::observe(new CommentObserver);
+    }
+
     public function post()
     {
         return $this->belongsTo(Post::class);
@@ -47,5 +56,10 @@ class Comment extends AppModel
         $parser = new Markdown();
 
         return $parser->parse($this->content);
+    }
+
+    public function hash()
+    {
+        return hash('md5', $this->ip);
     }
 }
