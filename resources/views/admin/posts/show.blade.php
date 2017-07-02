@@ -52,8 +52,10 @@
         </div>
         <div class="comment-form">
             {{ Form::open(['route' => ['comments.store', $post->id]]) }}
-                {{ Form::text('name') }}
-                {{ Form::textarea('content') }}
+                <div>{{ Form::hidden('post_id', $post->id) }}</div>
+                <div>{{ Form::text('name') }}</div>
+                <div>{{ Form::textarea('content') }}</div>
+                {{ Form::submit(__('messages.buttons.write_comment')) }}
             {{ Form::close() }}
         </div>
     </div>

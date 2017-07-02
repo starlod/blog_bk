@@ -42,6 +42,7 @@ return [
         'save'           => '保存',
         'register'       => '登録',
         'update'         => '更新',
+        'write_comment'  => 'コメントを書く',
         'upload'         => 'アップロード',
         'download'       => 'ダウンロード',
         'delete'         => '削除',
