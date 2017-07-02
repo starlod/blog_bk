@@ -2,6 +2,8 @@
 
 namespace App;
 
+use cebe\markdown\MarkdownExtra as Markdown;
+
 class Comment extends AppModel
 {
     protected $table = 'comments';
@@ -40,4 +42,10 @@ class Comment extends AppModel
         return $this->belongsTo(User::class);
     }
 
+    public function parse()
+    {
+        $parser = new Markdown();
+
+        return $parser->parse($this->content);
+    }
 }

@@ -15,9 +15,10 @@ class UsersTableSeeder extends Seeder
 
         $roles = App\Role::all();
         foreach ($roles as $key => $role) {
+            $name = str_replace('role_', '', strtolower($role->name));
             $user = factory(App\User::class, 1)->create([
-                'name'  => "user$key",
-                'email' => "user$key@test.jp",
+                'name'  => $name,
+                'email' => $name . '@test.jp',
                 'role_id' => $role->id,
             ]);
         }

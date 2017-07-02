@@ -31,12 +31,31 @@
 
     @if (auth()->user())
         <span>
-            {{ link_to_route('admin.posts.edit', __('messages.buttons.edit'), $post->id, ['class' => 'btn btn-secondary', 'role' => 'button']) }}
+            {{ link_to_route('admin.posts.edit', __('messages.buttons.edit'), $post->id, ['class' => 'btn btn-warning btn-sm', 'role' => 'button']) }}
         </span>
     @endif
 
     <div>
-        {!! Markdown::convertToHtml($post->content) !!}
+        {!! $post->parse() !!}
+    </div>
+
+    <h2>コメント</h2>
+
+    <div class="comments">
+        <div class="comment-list">
+            @foreach ($post->comments as $comment)
+                <div class="comment">
+                    <span>{{ $comment->name }}</span>
+                    {!! $comment->parse() !!}
+                </div>
+            @endforeach
+        </div>
+        <div class="comment-form">
+            {{ Form::open(['route' => ['comments.store', $post->id]]) }}
+                {{ Form::text('name') }}
+                {{ Form::textarea('content') }}
+            {{ Form::close() }}
+        </div>
     </div>
 </div>
 

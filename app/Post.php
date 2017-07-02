@@ -2,6 +2,7 @@
 
 namespace App;
 
+use cebe\markdown\MarkdownExtra as Markdown;
 use Log;
 use Auth;
 
@@ -52,6 +53,13 @@ class Post extends AppModel
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function parse()
+    {
+        $parser = new Markdown();
+
+        return $parser->parse($this->content);
     }
 
     /**

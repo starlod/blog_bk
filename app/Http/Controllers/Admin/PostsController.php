@@ -27,7 +27,6 @@ class PostsController extends Controller
     /**
      * 記事 新規
      *
-     * @param Integer $id
      * @return View
      */
     public function create()
@@ -55,63 +54,49 @@ class PostsController extends Controller
     /**
      * 記事 詳細
      *
-     * @param Integer $id
+     * @param App\Post $post
      * @return View
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        if ($post = Post::find($id)) {
-            return View::make('admin.posts.show')->with(compact('post'));
-        }
-
-        message('messages.not_found', 'warning', ['name' => '記事']);
-
-        return redirect()->route('admin.posts.index');
+        return View::make('admin.posts.show')->with(compact('post'));
     }
 
     /**
      * 記事 編集
      *
-     * @param Integer $id
+     * @param App\Post $post
      * @return View
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        if ($post = Post::find($id)) {
-            return View::make('admin.posts.edit')->with(compact('post'));
-        }
-
-        message('messages.not_found', 'warning', ['name' => '記事']);
-
-        return redirect()->route('admin.posts.index');
+        return View::make('admin.posts.edit')->with(compact('post'));
     }
 
     /**
      * 記事 更新
      *
      * @param postRequest $request
-     * @param Integer $id
+     * @param App\Post $post
      * @return Redirect to post index
      */
-    public function update(PostRequest $request, $id)
+    public function update(PostRequest $request, Post $post)
     {
-        $post = Post::find($id);
         $post->update($request->all());
 
         message('messages.updated', 'success', ['name' => '記事']);
 
-        return redirect()->route('admin.posts.show', $id);
+        return redirect()->route('admin.posts.show', $post->id);
     }
 
     /**
      * 記事 削除
      *
-     * @param Integer $id
+     * @param App\Post $post
      * @return Redirect to post index
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post = Post::find($id);
         $post->delete();
 
         message('messages.deleted', 'success', ['name' => '記事']);
