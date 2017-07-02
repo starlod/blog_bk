@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use cebe\markdown\MarkdownExtra as Markdown;
 

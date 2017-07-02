@@ -15,14 +15,14 @@
             <li class="nav-item {{ active('/gallery') }}">
                 <a class="nav-link" href="{{ url('/gallery') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> {{ trans('messages.menu.gallery') }}</a>
             </li>
-            @can('create', 'App\Post')
+            @can('create', 'App\Models\Post')
                 <li class="nav-item {{ active('/posts/create') }}">
                     <a class="nav-link" href="{{ url('/posts/create') }}">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ trans('messages.menu.posts_create') }}
                     </a>
                 </li>
             @endcan
-            @can('create', App\Link::class)
+            @can('create', App\Models\Link::class)
                 <li class="nav-item {{ active('/gallery') }}">
                     <a class="nav-link" href="{{ url('/images') }}">
                         <i class="fa fa-picture-o" aria-hidden="true"></i> {{ trans('messages.menu.images_index') }}

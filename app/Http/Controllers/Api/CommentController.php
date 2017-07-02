@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Post;
-use App\Comment;
+use App\Models\Post;
+use App\Models\Comment;
 
 class CommentController extends Controller
 {

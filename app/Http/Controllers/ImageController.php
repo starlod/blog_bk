@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ImageRequest;
-use App\Link;
+use App\Models\Link;
 use View;
 use Storage;
 

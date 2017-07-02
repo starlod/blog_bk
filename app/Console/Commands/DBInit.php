@@ -4,8 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use DB;
-use App\Role;
-use App\User;
+use App\Models\Role;
+use App\Models\User;
 
 class DBInit extends Command
 {

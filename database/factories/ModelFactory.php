@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     static $password;
     static $id;
 
@@ -28,7 +28,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Category::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
     $word = $faker->word;
     return [
         'parent_id'   => null,
@@ -39,7 +39,7 @@ $factory->define(App\Category::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Tag::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Tag::class, function (Faker\Generator $faker) {
     $word = $faker->word;
     return [
         'slug'        => $word,
@@ -49,24 +49,24 @@ $factory->define(App\Tag::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Post::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
     return [
-        'category_id'  => App\Category::all()->random()->id,
+        'category_id'  => App\Models\Category::all()->random()->id,
         'title'        => $faker->title,
         'content'      => $faker->content,
         'status'       => $faker->randomElement(config('const.status')),
         'published_at' => $faker->dateTimeBetween('-30 days', $endDate = '30 days'),
-        'author_id'    => App\User::all()->random()->id,
-        'creator_id'   => App\User::all()->random()->id,
-        'updater_id'   => App\User::all()->random()->id,
+        'author_id'    => App\Models\User::all()->random()->id,
+        'creator_id'   => App\Models\User::all()->random()->id,
+        'updater_id'   => App\Models\User::all()->random()->id,
     ];
 });
 
-$factory->define(App\Comment::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
     return [
         'post_id'   => App\Post::all()->random()->id,
         'parent_id' => null,
-        'author_id' => App\User::all()->random()->id,
+        'author_id' => App\Models\User::all()->random()->id,
         'hash_id'   => $faker->md5,
         'name'      => $faker->name,
         'content'   => $faker->text,
@@ -78,7 +78,7 @@ $factory->define(App\Comment::class, function (Faker\Generator $faker) {
     ];
 });
 
-// $factory->define(App\Link::class, function (Faker\Generator $faker) {
+// $factory->define(App\Models\Link::class, function (Faker\Generator $faker) {
 //     $url = $faker->imageUrl(640, 480);
 //     return [
 //         'name'        => $faker->word,

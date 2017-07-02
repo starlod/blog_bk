@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\TagRequest;
-use App\Tag;
-use App\Post;
+use App\Models\Tag;
+use App\Models\Post;
 use View;
 
 class TagController extends Controller

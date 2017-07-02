@@ -16,13 +16,13 @@ class UsersTableSeeder extends Seeder
         $roles = App\Role::all();
         foreach ($roles as $key => $role) {
             $name = str_replace('role_', '', strtolower($role->name));
-            $user = factory(App\User::class, 1)->create([
+            $user = factory(App\Models\User::class, 1)->create([
                 'name'  => $name,
                 'email' => $name . '@test.jp',
                 'role_id' => $role->id,
             ]);
         }
 
-        factory(App\User::class, 30)->create();
+        factory(App\Models\User::class, 30)->create();
     }
 }

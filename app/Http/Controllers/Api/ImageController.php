@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 use App\Http\Requests\ImageRequest;
 use Log;
 use Storage;
-use App\Link;
+use App\Models\Link;
 
 class ImageController extends Controller
 {

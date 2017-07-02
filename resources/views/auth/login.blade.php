@@ -8,6 +8,14 @@
     </div>
 </div>
 
+
+<div class="container">
+    <pre>
+    id: developer@test.jp
+    pw: secret
+    </pre>
+</div>
+
 <div class="container">
     {{ Form::open(['url' => ["/login"], 'method' => 'POST', 'class' => 'form-horizontal']) }}
 

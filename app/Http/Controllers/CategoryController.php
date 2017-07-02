@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
-use App\Category;
-use App\Post;
+use App\Models\Category;
+use App\Models\Post;
 use View;
 
 class CategoryController extends Controller
