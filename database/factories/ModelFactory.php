@@ -67,7 +67,7 @@ $factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
         'post_id'   => App\Models\Post::all()->random()->id,
         'parent_id' => null,
         'author_id' => App\Models\User::all()->random()->id,
-        'hash_id'   => $faker->md5,
+        'hash_ip'   => $faker->md5,
         'name'      => $faker->name,
         'content'   => $faker->text,
         'email'     => $faker->email,

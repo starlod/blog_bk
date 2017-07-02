@@ -18,7 +18,7 @@ class CreateComments extends Migration
             $table->integer('post_id')->comment('記事ID');
             $table->integer('parent_id')->nullable()->comment('親コメントID');
             $table->integer('author_id')->nullable()->comment('投稿者ID');
-            $table->string('hash_id')->comment('ハッシュID');
+            $table->string('hash_ip', 32)->comment('ハッシュIP(MD5)');
             $table->string('name')->comment('コメント投稿者名');
             $table->text('content')->comment('コメント内容');
             $table->string('email')->nullable()->comment('メールアドレス');

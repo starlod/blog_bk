@@ -17,7 +17,7 @@ class Comment extends AppModel
         'post_id',          // 記事ID
         'parent_id',        // 親コメントID
         'author_id',        // 投稿者ID
-        'hash_id',          // ハッシュID
+        'hash_ip',          // ハッシュIP(MD5)
         'name',             // コメント投稿者名
         'content',          // コメント内容
         'email',            // メールアドレス
