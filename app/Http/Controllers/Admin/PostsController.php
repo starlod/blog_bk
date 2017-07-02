@@ -54,7 +54,7 @@ class PostsController extends Controller
     /**
      * 記事 詳細
      *
-     * @param App\Post $post
+     * @param App\Models\Post $post
      * @return View
      */
     public function show(Post $post)
@@ -65,7 +65,7 @@ class PostsController extends Controller
     /**
      * 記事 編集
      *
-     * @param App\Post $post
+     * @param App\Models\Post $post
      * @return View
      */
     public function edit(Post $post)
@@ -77,7 +77,7 @@ class PostsController extends Controller
      * 記事 更新
      *
      * @param postRequest $request
-     * @param App\Post $post
+     * @param App\Models\Post $post
      * @return Redirect to post index
      */
     public function update(PostRequest $request, Post $post)
@@ -92,7 +92,7 @@ class PostsController extends Controller
     /**
      * 記事 削除
      *
-     * @param App\Post $post
+     * @param App\Models\Post $post
      * @return Redirect to post index
      */
     public function destroy(Post $post)

@@ -32,7 +32,7 @@ class CategoriesTableSeeder extends Seeder
         foreach ((array)$models as $model) {
             $data = collect($model);
             $childs = $data->pull('childs');
-            $category = App\Category::create($data->merge($options)->all());
+            $category = App\Models\Category::create($data->merge($options)->all());
             $this->recursion($childs, ['parent_id' => $category->id]);
         }
     }

@@ -15,8 +15,14 @@ class CreatePosts extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
+            $table->integer('category_id')->nullable()->comment('カテゴリーID');
+            $table->string('status')->default('publish')->comment('記事ステータス');
             $table->string('title')->index()->comment('記事タイトル');
             $table->text('content')->nullable()->comment('記事内容');
+            $table->integer('author_id')->nullable()->comment('著者ID');
+            $table->integer('creator_id')->nullable()->comment('作成者ID');
+            $table->integer('updater_id')->nullable()->comment('更新者ID');
+            $table->dateTime('published_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('投稿日時');
             $table->timestamps();
         });
     }

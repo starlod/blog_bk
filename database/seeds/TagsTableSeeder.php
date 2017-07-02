@@ -23,7 +23,7 @@ class TagsTableSeeder extends Seeder
         ];
 
         foreach ($tags as $tag) {
-            factory(App\Tag::class, 1)->create([
+            factory(App\Models\Tag::class, 1)->create([
                 'slug' => $tag['slug'],
                 'name' => $tag['name'],
                 'description' => '',

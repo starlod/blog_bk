@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Post;
+use App\Models\Post;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostPolicy extends AppPolicy
@@ -14,7 +14,7 @@ class PostPolicy extends AppPolicy
      * Determine whether the user can view the post.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Post  $post
+     * @param  \App\Models\Post  $post
      * @return mixed
      */
     public function view(User $user, Post $post)
@@ -37,7 +37,7 @@ class PostPolicy extends AppPolicy
      * Determine whether the user can update the post.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Post  $post
+     * @param  \App\Models\Post  $post
      * @return mixed
      */
     public function update(User $user, Post $post)
@@ -49,7 +49,7 @@ class PostPolicy extends AppPolicy
      * Determine whether the user can delete the post.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Post  $post
+     * @param  \App\Models\Post  $post
      * @return mixed
      */
     public function delete(User $user, Post $post)

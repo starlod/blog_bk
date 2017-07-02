@@ -13,9 +13,9 @@ class CommentsTableSeeder extends Seeder
     {
         DB::table('comments')->truncate();
 
-        $posts = App\Post::all();
+        $posts = App\Models\Post::all();
         foreach ($posts as $post) {
-            factory(App\Comment::class, 5)->create([
+            factory(App\Models\Comment::class, 5)->create([
                 'post_id' => $post->id,
             ]);
         }

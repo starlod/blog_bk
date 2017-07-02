@@ -27,7 +27,7 @@ class PostsController extends Controller
     /**
      * 記事 詳細
      *
-     * @param App\Post $post
+     * @param App\Models\Post $post
      * @return View
      */
     public function show(Post $post)

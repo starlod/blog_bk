@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->truncate();
 
-        $roles = App\Role::all();
+        $roles = App\Models\Role::all();
         foreach ($roles as $key => $role) {
             $name = str_replace('role_', '', strtolower($role->name));
             $user = factory(App\Models\User::class, 1)->create([

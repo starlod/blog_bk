@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('nickname')->nullable();
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('role_id')->comment('権限ID');
             $table->rememberToken();
             $table->timestamps();
         });

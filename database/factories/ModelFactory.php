@@ -23,7 +23,7 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'nickname' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: 'secret',
-        'role_id' => App\Role::all()->random()->id,
+        'role_id' => App\Models\Role::all()->random()->id,
         'remember_token' => str_random(10),
     ];
 });
@@ -64,7 +64,7 @@ $factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
     return [
-        'post_id'   => App\Post::all()->random()->id,
+        'post_id'   => App\Models\Post::all()->random()->id,
         'parent_id' => null,
         'author_id' => App\Models\User::all()->random()->id,
         'hash_id'   => $faker->md5,

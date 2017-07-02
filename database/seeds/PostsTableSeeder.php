@@ -13,11 +13,11 @@ class PostsTableSeeder extends Seeder
     {
         DB::table('posts')->truncate();
 
-        factory(App\Post::class, 150)->create();
+        factory(App\Models\Post::class, 150)->create();
 
-        $posts = App\Post::all();
+        $posts = App\Models\Post::all();
         foreach ($posts as $post) {
-            $post->tags()->attach(App\Tag::all()->random()->id);
+            $post->tags()->attach(App\Models\Tag::all()->random()->id);
             $post->update();
         }
     }
