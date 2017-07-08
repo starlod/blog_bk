@@ -3,7 +3,6 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "blog.dev"
 
   # ネットワーク設定
-  # config.vm.network :forwarded_port, guest: 80, host: 8080
   config.vm.network :private_network, ip: "192.168.33.10"
   # config.vm.network :public_network, ip: "192.168.0.120", bridge: "en0: Ethernet" # 他の人と被らないIPにすること
 
@@ -11,7 +10,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
   # 共有フォルダ(インストール時はapacheユーザーがいないので無効化する)
-  config.vm.synced_folder ".", "/var/www/html/laravel", create: true, owner: 'apache', group: 'apache', mount_options: ['dmode=777', 'fmode=775'], nfs: false
+  config.vm.synced_folder ".", "/home/vagrant/laravel", create: true, owner: 'apache', group: 'apache', mount_options: ['dmode=777', 'fmode=775'], nfs: false
 
   # プロビジョン
   if ARGV.include? '--provision-with'

@@ -13,3 +13,4 @@ public/fonts/*
 
 #vagrant
 .vagrant
+package.box
