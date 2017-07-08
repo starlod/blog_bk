@@ -18,11 +18,6 @@ Route::get('/', 'HomeController@index');
 Route::resource('posts', 'PostsController', ['only' => ['index', 'show']]);
 Route::resource('posts/{post}/comments', 'CommentsController', ['only' => ['store', 'update']]);
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-    Route::resource('posts', 'PostsController', ['as' => 'admin']);
-    // Route::resource('posts/{post}/comments', 'CommentsController', ['as' => 'admin']);
-});
-
 Route::get('/profile', 'UserController@profile');
 Route::put('/profile', 'UserController@profileUpdate');
 Route::get('/change_password', 'UserController@changePassword');

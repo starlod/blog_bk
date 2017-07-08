@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller as BaseController;
+use App\Models\Post;
+use View;
 
 class Controller extends BaseController
 {
     /**
-     * Create a new controller instance.
+     * 記事 一覧
      *
-     * @return void
+     * @return View
      */
-    public function __construct()
+    public function home()
     {
-        $this->middleware('auth');
+        $posts = Post::all();
+
+        return View::make('admin.posts.index', compact('posts'));
     }
 }
