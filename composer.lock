@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "47b78343efdbee64a93f2adde8c55312",
+    "content-hash": "8c8a8ba36847a1ae1a2a149ae15f798a",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -2898,6 +2898,72 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "deployer/recipes",
+            "version": "4.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deployphp/recipes.git",
+                "reference": "4811488d2f210e5d93e874d9615aea8b58dc3aa2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deployphp/recipes/zipball/4811488d2f210e5d93e874d9615aea8b58dc3aa2",
+                "reference": "4811488d2f210e5d93e874d9615aea8b58dc3aa2",
+                "shasum": ""
+            },
+            "replace": {
+                "deployphp/recipes": "self.version"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samuel Gordalina",
+                    "email": "samuel.gordalina@gmail.com",
+                    "homepage": "https://gordalina.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Tomas Majer",
+                    "email": "tomasmajer@gmail.com",
+                    "homepage": "http://tomaj.sk",
+                    "role": "Contributor"
+                },
+                {
+                    "name": "Hubert Kowalski",
+                    "email": "h.kowalski@hakger.pl",
+                    "homepage": "https://hakger.pl",
+                    "role": "Contributor"
+                },
+                {
+                    "name": "Anton Medvedev",
+                    "email": "anton@medv.io",
+                    "homepage": "http://medv.io",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "3rd party deployer recipes",
+            "homepage": "https://github.com/deployphp/recipes",
+            "keywords": [
+                "cachetool",
+                "deploy",
+                "deployer",
+                "deployment",
+                "newrelic",
+                "recipes",
+                "slack"
+            ],
+            "time": "2017-03-27T16:28:47+00:00"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
